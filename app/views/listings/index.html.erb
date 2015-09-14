@@ -1,8 +1,9 @@
 <% if @listings.empty? %>
 	<p>No listings have been posted yet</p>
-	<a href="#">Add a listing</a>
+	<%= link_to "Add a listing", new_listing_path %>
 <% else %>
 	<% @listings.each do |listing| %>
 		<h3><%= listing.name %></h3>
 	<% end %>
+	<%= link_to "Add a listing", new_listing_path %>
 <% end %>

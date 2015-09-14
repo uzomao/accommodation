@@ -9,9 +9,25 @@ feature 'listings' do
 		end
 	end
 
-	scenario 'Students can see a list of available accommodation' do
-		Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
-		visit '/listings'
-		expect(page).to have_content("The Student Centre")
+	context 'listings have been posted' do
+		scenario 'Students can see a list of available accommodation' do
+			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
+			visit '/listings'
+			expect(page).to have_content("The Student Centre")
+		end
+	end
+
+	context 'Creating Listings' do 
+		scenario 'prompts landlord to fill out a form, then displays new listing' do 
+			visit '/listings'
+			click_link 'Add a listing'
+			fill_in 'Name', with: 'The Student Centre'
+			fill_in 'Address', with: '123 Douala Drive'
+			fill_in 'City', with: 'Yaounde'
+			fill_in 'Price', with: 145000
+			click_button 'Create Listing'
+			expect(page).to have_content "The Student Centre"
+			expect(current_path).to eq '/listings'
+		end
 	end
 end
