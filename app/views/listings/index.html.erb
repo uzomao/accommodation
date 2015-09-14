@@ -4,6 +4,9 @@
 <% else %>
 	<% @listings.each do |listing| %>
 		<h3><%= listing.name %></h3>
+		<%= listing.address %>
+		<%= listing.city %>
+		<%= listing.price %>
 	<% end %>
 	<%= link_to "Add a listing", new_listing_path %>
 <% end %>
