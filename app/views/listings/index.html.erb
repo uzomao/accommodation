@@ -7,6 +7,8 @@
 		<%= listing.address %>
 		<%= listing.city %>
 		<%= listing.price %>
+		<%= link_to "Edit", edit_listing_path(listing.id) %>
+		<%= link_to "Delete", listing_path(listing.id), :method => "delete"   %>
 	<% end %>
 	<%= link_to "Add a listing", new_listing_path %>
 <% end %>

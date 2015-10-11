@@ -29,5 +29,26 @@ feature 'listings' do
 			expect(page).to have_content "The Student Centre"
 			expect(current_path).to eq '/listings'
 		end
+
+		scenario 'landlord can edit listing' do
+			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
+			visit '/listings'
+			click_link 'Edit'
+			fill_in 'Name', with: "The Student Place"
+			click_button 'Update Listing'
+			expect(page).to have_content 'The Student Place'
+			expect(current_path).to eq '/listings'
+		end
+	end
+
+	context 'Deleting listings' do
+		scenario 'Landlord can delete listings' do 
+			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
+			visit '/listings'
+			expect(page).to have_content("The Student Centre")
+			click_link 'Delete'
+			expect(page).not_to have_content("The Student Centre")
+			expect(page).to have_content('No listings have been posted yet')
+		end
 	end
 end
