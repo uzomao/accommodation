@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
 
+	before_action :authenticate_user!, :except => [:index, :show]
+
 	def index
 		@listings = Listing.all
 	end
@@ -10,6 +12,7 @@ class ListingsController < ApplicationController
 
 	def create
 		Listing.create(listing_params)
+		Listing.last.update_columns(user_id: current_user.id)
 		redirect_to '/listings'
 	end
 
