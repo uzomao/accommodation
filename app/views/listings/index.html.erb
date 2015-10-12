@@ -7,23 +7,26 @@
 	<% end %>
 </div>
 
+
+<div class="add_listing">
+	<% if user_signed_in? %>
+		<%= link_to "Add a listing", new_listing_path %>
+	<% else %>
+		<%= link_to "Add a listing", new_user_session_path %>
+	<% end %>
+</div>
+
 <% if @listings.empty? %>
-	<div class="add_listing">
-		<p>No listings have been posted yet</p>
-		<%= link_to "Add a listing", new_listing_path %>
-	</div>
+	<p>No listings have been posted yet</p>
 <% else %>
-	<div class="add_listing">
-		<%= link_to "Add a listing", new_listing_path %>
-		<% @listings.each do |listing| %>
-	</div>
-	<div class="listings">
-		<h3><%= listing.name %></h3>
-		<%= listing.address %>
-		<%= listing.city %>
-		<%= listing.price %>
-		<%= link_to "Edit", edit_listing_path(listing.id) %>
-		<%= link_to "Delete", listing_path(listing.id), :method => "delete"   %>
-	</div>
+	<% @listings.each do |listing| %>
+		<div class="listings">
+			<h3><%= listing.name %></h3>
+			<%= listing.address %>
+			<%= listing.city %>
+			<%= listing.price %>
+			<%= link_to "Edit", edit_listing_path(listing.id) %>
+			<%= link_to "Delete", listing_path(listing.id), :method => "delete"   %>
+		</div>
 	<% end %>
 <% end %>
