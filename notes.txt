@@ -1,0 +1,3 @@
+- Set default url options for production environment when the time comes
+
+- You can run rails g devise:views to generate views for devise

@@ -1,4 +1,0 @@
-to-do accommodation
-
-- add flash messages
-- only the creator of a posting can edit or delete it
