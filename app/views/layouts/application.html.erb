@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% flash.each do |key, value| %>
+  <div class="pop">
+    <%= value %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
