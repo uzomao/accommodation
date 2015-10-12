@@ -17,9 +17,14 @@ feature 'listings' do
 		end
 	end
 
-	context 'Creating Listings' do 
+	context 'Creating Listings' do
 		scenario 'prompts landlord to fill out a form, then displays new listing' do 
-			visit '/listings'
+			visit('/')
+		    click_link('Sign up')
+		    fill_in('Email', with: 'test@example.com')
+		    fill_in('Password', with: 'testtest')
+		    fill_in('Password confirmation', with: 'testtest')
+		    click_button('Sign up') #move these into helper method
 			click_link 'Add a listing'
 			fill_in 'Name', with: 'The Student Centre'
 			fill_in 'Address', with: '123 Douala Drive'
@@ -28,6 +33,12 @@ feature 'listings' do
 			click_button 'Create Listing'
 			expect(page).to have_content "The Student Centre"
 			expect(current_path).to eq '/listings'
+		end
+
+		scenario "landlord can only create listings if signed in" do
+			visit '/'
+			click_link 'Add a listing'
+			expect(current_path).to eq '/users/sign_in'
 		end
 
 		scenario 'landlord can edit listing' do
