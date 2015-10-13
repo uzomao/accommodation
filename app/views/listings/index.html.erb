@@ -1,30 +1,61 @@
-<div class="user_links">
-	<% if user_signed_in? %>
-		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-	<% else %>
-		<%= link_to "Sign in", new_user_session_path %>
-		<%= link_to "Sign up", new_user_registration_path %>
-	<% end %>
-</div>
+<%= render 'shared/carousel' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<section id="content">
+				<div class="row">
+					<!-- product Listing -->
+					<div class="product-list grid-layout clearfix">
+
+						<div class="col-sm-12 col-md-12 the-title text-left">
+							<div class="row">
+								<div class="col-md-6 col-sm-7 col-xs-8">
+									<h2>Featured Listings</h2>
+								</div>
+								<div class="col-md-6 col-sm-5 col-xs-4">
+									<%= link_to "Add a listing", new_listing_path, class: "pull-right btn btn-flat-alizarin" %>
+								</div>
+							</div>
+						</div>
 
 
-<div class="add_listing">
-	<%= link_to "Add a listing", new_listing_path %>
-</div>
-
-<% if @listings.empty? %>
-	<p>No listings have been posted yet</p>
-<% else %>
-	<% @listings.each do |listing| %>
-		<div class="listings">
-			<h3><%= listing.name %></h3>
-			<%= listing.address %>
-			<%= listing.city %>
-			<%= listing.price %>
-			<% if current_user && (listing.user_id == current_user.id) %>
-				<%= link_to "Edit", edit_listing_path(listing.id) %>
-				<%= link_to "Delete", listing_path(listing.id), :method => "delete" %>
-			<% end %>
+						<% if @listings.empty? %>
+							<p>No listings have been posted yet</p>
+						<% else %>
+								<% @listings.each do |listing| %>
+									<div class="prop-item col-sm-6 col-md-3">
+										<a href="/listings/<%=listing.id%>">
+											<div class="thumbnail">
+												<div class="thumbnail-img thumbscrubber">
+													<span class="ts-inner">
+														<img src="http://upload.wikimedia.org/wikipedia/commons/b/b0/Semi-Detached_House_with_Ford_Escort_car.jpg" alt="House" class="ts-currslide">
+														<img src="http://upload.wikimedia.org/wikipedia/commons/b/b2/Family_room_in_Camarillo%2C_California%2C_USA.jpg" alt="Family Room">
+														<img src="http://upload.wikimedia.org/wikipedia/commons/0/0d/Bedroom_Mitcham.jpg" alt="Bedroom">
+														<img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Calhoun_bathroom.jpg" alt="Bathroom">
+														<img src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Highgrove_Kitchen.jpg" alt="Kitchen">
+												    </span>
+								    			</div>
+								    			<div class="thumbnail-body">
+								    				<div class="caption">
+													<h3><%= listing.name %></h3>
+														<span class="prop-address"><%= listing.address %></span>
+														<%= listing.city %>
+														<div class="prop-price"><%= listing.price %></div>
+														<% if current_user && (listing.user_id == current_user.id) %>
+															<%= link_to "Edit", edit_listing_path(listing.id) %>
+															<%= link_to "Delete", listing_path(listing.id), :method => "delete" %>
+														<% end %>
+													</div> <!-- .caption -->
+												</div> <!-- .thumbnail-body -->
+											</div> <!-- .thumbnail -->
+										</a>
+									</div> <!-- .prop-item col-sm-6 col-md-3 -->
+								<% end %>
+						<% end %>
+					</div> <!-- .product-list grid-layout clearfix -->
+				</div>
+			</section>
 		</div>
-	<% end %>
-<% end %>
+	</div>
+</div>
