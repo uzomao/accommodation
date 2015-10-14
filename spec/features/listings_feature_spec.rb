@@ -13,12 +13,20 @@ feature 'listings' do
 		end
 	end
 
-	context 'listings have been posted' do
-		scenario 'Students can see a list of available accommodation' do
-			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
+	context 'listings have been posted / Viewing listings' do
+		scenario 'Users can see a list of available accommodation' do
+			create_listing
 			visit '/listings'
 			expect(page).to have_content("The Student Centre")
 		end
+
+		scenario 'Individual listings can be viewed in detail' do 
+			create_listing
+			visit '/'
+			find('.thumbnail').click
+			expect(page).to have_content("The Student Centre")
+		end
+
 	end
 
 	context 'Creating Listings' do
@@ -41,7 +49,7 @@ feature 'listings' do
 		end
 
 		xscenario 'landlord can edit listing' do
-			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000, user_id: 1)
+			create_listing
 			visit '/listings'
 			click_link 'Edit'
 			fill_in 'Name', with: "The Student Place"
@@ -68,7 +76,7 @@ feature 'listings' do
 
 	context 'Deleting listings' do
 		scenario 'Landlord can delete listings' do 
-			Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000)
+			create_listing
 			visit '/listings'
 			expect(page).to have_content("The Student Centre")
 			click_link 'Delete'
@@ -87,6 +95,10 @@ feature 'listings' do
 	    fill_in('Password', with: password)
 	    fill_in('Password confirmation', with: password)
 	    click_button('Sign up')
+	end
+
+	def create_listing
+		Listing.create(name: "The Student Centre", address: "123 Douala Drive", city: "Yaounde", price: 145000, user_id: 1)
 	end
 
 end
