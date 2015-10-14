@@ -81,12 +81,17 @@
 						<div class="product-details box">
 							<div class="product-info">
 								<h3>Property Info</h3>
-								<ul class="listing-content clearfix noprint">
+								<!-- <ul class="listing-content clearfix noprint">
 									<li>Available immediately</li>
 									<li>Furnished or unfurnished</li>
-								</ul>
+								</ul> -->
+								<% if @listing.prop_info %>
+									<p><%= @listing.prop_info %></p>
+								<% else %>
+									<p><i>No information about this property was added</i></p>
+								<% end %>
 
-								<h3>Property Features</h3>
+								<!-- <h3>Property Features</h3>
 								<ul>
 			                        <li>Wood floors</li>
 			                        <li>Overlooking the River</li>
@@ -95,17 +100,16 @@
 			                        <li>Off street parking</li>
 			                        <li>Mins to Canary Wharf</li>
 			                        <li>Excellent amenities</li>
-			            		</ul>
+			            		</ul> -->
 
 								<h3>Property Description</h3>
-								<p>
-									Large four double bedroom house overlooking the river and located within seconds of the Thames clipper service. The product comprises four large double bedrooms, three modern bathrooms, large open plan lounge and off street parking. The house has been finished to an extremely high standard with wood floors, neutral decor, high spec integrated kitchen, modern bathrooms and high end furnishings. The product is located within a few minutes of tube and boasts fantastic transport links into the City and Central London. Canary Wharf is only a few minutes commute by boat and there are fantastic amenities in the local area. 
-									
-									<p>Referencing fee: $120.00 per person incl vat. This charge covers collecting of all references and any third party credit checks that are required, collection of all monies and preparation of legal documents.</p>
-									
-									<p>Inventory: Inventory charges start at $70.00 + tax and are related to number of bedrooms. An inventory charge is not applicable on all properties but is highly recommended.
-									Change of tenant: To change a name on tenancy agreements will incur a charge of $150.00 inclusive of references.</p>
-								</p>
+								<% if @listing.prop_desc %>
+									<p>
+										<%= @listing.prop_desc %>
+									</p>
+								<% else %>
+									<p><i>No description was added for this property</i></p>
+								<% end %>
 							</div>
 						</div>
 					</div>
