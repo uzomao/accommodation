@@ -36,3 +36,21 @@ feature "User can sign in and out" do
    		end
     end
 end
+
+feature 'Users have a profile' do 
+	scenario 'users can visit their profile page and see their information' do 
+		sign_up
+		visit '/'
+		click_link 'Profile'
+		expect(page).to have_content("test@example.com")
+	end
+
+	def sign_up(email="test@example.com", password="testtest")
+		visit('/')
+	    click_link('Sign up')
+	    fill_in('Email', with: email)
+	    fill_in('Password', with: password)
+	    fill_in('Password confirmation', with: password)
+	    click_button('Sign up')
+	end
+end
