@@ -1,3 +1,125 @@
-<div>
-	<%= @listing.name %>
+<div class="container">
+	<div class="row row-offcanvas-sm row-offcanvas-sm-right box-padding">
+
+		<div class="col-md-9">
+			<section id="content">
+				
+	<div class="row">
+		<!-- Single Listing -->
+
+		<div id="product-single" class="clearfix">
+
+			<div class="col-md-12">
+				<button type="button" class="btn btn-flat-asbestos btn-icon hidden-md hidden-lg hidden-xs pull-right" data-toggle="offcanvas-sm">
+					<i class="fa fa-share"></i> Contact &amp; Share 
+				</button>
+				<div class="clearfix"></div>
+			</div>
+
+			<div id="product-title" class="col-sm-12 col-md-12 col-xs-12">
+				<div class="title-bar clearfix">
+					<div class="row">
+
+						<div class="col-sm-6 col-md-6 col-xs-12">
+							<h2><%= @listing.name %></h2>
+							<span><%= @listing.address %></span>
+						</div>
+						
+						<div class="col-sm-6 col-md-6 col-xs-12">
+							<span class="prop-price">
+								<%= @listing.price %>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="product-gallery" class="col-sm-12 col-md-12">	
+						<div class="product-details box">
+							<div id="filmstrip" class="filmstrip slide">
+							    <div class="filmstrip-top">
+							        <div class="filmstrip-inner">
+							            <div class="item active">
+							                <img class="media-object" src="http://upload.wikimedia.org/wikipedia/commons/1/18/Kitchen_Fitting_%286%29.JPG" alt="">
+							            </div>
+							            <div class="item">
+							                <img class="media-object" src="http://upload.wikimedia.org/wikipedia/commons/5/57/Earth_house_interior1.jpg" alt="">
+							            </div>
+							            <div class="item">
+							                <img src="http://upload.wikimedia.org/wikipedia/commons/5/53/Opo%C4%8Dno_castle_in_2009_22.JPG" />
+							            </div>
+							            <div class="item">
+							                <img src="http://upload.wikimedia.org/wikipedia/commons/7/74/CITIB-projektor.jpg" />
+							            </div>
+							        </div>
+							        <a class="left filmstrip-control" href="#filmstrip" data-filmstrip="prev"><i class="fa fa-chevron-left"></i></a>
+							        <a class="right filmstrip-control" href="#filmstrip" data-filmstrip="next"><i class="fa fa-chevron-right"></i></a>
+							    </div>
+
+							    <div class="filmstrip-thumbs-wrapper">
+								    <div class="filmstrip-thumbs">
+								        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
+								            <img class="media-object" src="http://upload.wikimedia.org/wikipedia/commons/1/18/Kitchen_Fitting_%286%29.JPG" alt="">
+								            <div class="pointer"></div>
+								        </a>
+								        <a class="thumb" href="#filmstrip" data-filmstrip="selector">
+								            <img class="media-object" src="http://upload.wikimedia.org/wikipedia/commons/5/57/Earth_house_interior1.jpg" alt="">
+								        </a>
+								        <a class="thumb" href="#filmstrip" data-filmstrip="selector">
+								            <img src="http://upload.wikimedia.org/wikipedia/commons/5/53/Opo%C4%8Dno_castle_in_2009_22.JPG" />
+								        </a>
+								        <a class="thumb" href="#filmstrip" data-filmstrip="selector">
+								            <img src="http://upload.wikimedia.org/wikipedia/commons/7/74/CITIB-projektor.jpg" />
+								        </a>
+								    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-md-12">
+						<div class="product-details box">
+							<div class="product-info">
+								<h3>Property Info</h3>
+								<ul class="listing-content clearfix noprint">
+									<li>Available immediately</li>
+									<li>Furnished or unfurnished</li>
+								</ul>
+
+								<h3>Property Features</h3>
+								<ul>
+			                        <li>Wood floors</li>
+			                        <li>Overlooking the River</li>
+			                        <li>Mins to LRT</li>
+			                        <li>Three bathrooms</li>
+			                        <li>Off street parking</li>
+			                        <li>Mins to Canary Wharf</li>
+			                        <li>Excellent amenities</li>
+			            		</ul>
+
+								<h3>Property Description</h3>
+								<p>
+									Large four double bedroom house overlooking the river and located within seconds of the Thames clipper service. The product comprises four large double bedrooms, three modern bathrooms, large open plan lounge and off street parking. The house has been finished to an extremely high standard with wood floors, neutral decor, high spec integrated kitchen, modern bathrooms and high end furnishings. The product is located within a few minutes of tube and boasts fantastic transport links into the City and Central London. Canary Wharf is only a few minutes commute by boat and there are fantastic amenities in the local area. 
+									
+									<p>Referencing fee: $120.00 per person incl vat. This charge covers collecting of all references and any third party credit checks that are required, collection of all monies and preparation of legal documents.</p>
+									
+									<p>Inventory: Inventory charges start at $70.00 + tax and are related to number of bedrooms. An inventory charge is not applicable on all properties but is highly recommended.
+									Change of tenant: To change a name on tenancy agreements will incur a charge of $150.00 inclusive of references.</p>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+
+	</div>
+
 </div>
+
+</div>
+
+
+
