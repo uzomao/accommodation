@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap/dist/css/bootstrap
  */
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
@@ -953,6 +954,9 @@ span.citer {
   position: relative;
   top: 8px;
   margin-left: 20px;
+}
+.navbar-right {
+
 }
 .navbar .navbar-nav > li a {
   text-transform: uppercase;
