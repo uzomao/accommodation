@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  match 'remote_sign_up', to: 'remote_content#remote_sign_up', via: [:get]
   devise_for :views
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   resources :listings
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

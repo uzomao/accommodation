@@ -45,8 +45,16 @@
 									<%= link_to "Log in", new_user_session_path, class: "login", "data-toggle": "modal", "data-target": "#modal-login" %>
 								</li>
 								<li>
+									<%= link_to "Log in", "#login", class: "login", "data-toggle": "modal" %>
+								</li>
+
+								<li>
 									<%= link_to "Register", new_user_registration_path, class: "register" %>
 								</li>
+								<li>
+									<%= link_to "Sign up", remote_sign_up_path, :remote => true,class: "register" %>
+								</li>
+
 							<% end %>
 							<!-- <li><a href="#modal-login" class="login" data-toggle="modal" data-target="#modal-login">Log In</a></li> -->
 							<!-- <li><a href="#modal-register" class="register" data-toggle="modal" data-target="#modal-register">Register</a></li> -->
