@@ -1,114 +1,40 @@
-<!-- <div class="modal hide fade in" id="login">
+<!-- Modal Login -->
+<div class="modal modal-login fade" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="modalLogin">Log In</h4>
+			</div>
+			<div class="modal-body">
 
-<div class="modal-header">
-
-<button class="close" data-dismiss="modal">x</button>
-
-<h2>Sign in Baybez</h2>
-
-</div>
-
-<div class="modal-body">
-
-<%= form_for(resource, :as => resource_name, :html => {:class => "normal-form", "role" => "form"}, :url => session_path(resource_name)) do |f| %>
-
-<div><%= f.label :email %><br />
-
-<%= f.email_field :email, :autofocus => true %></div>
-
-<div><%= f.label :password %><br />
-
-<%= f.password_field :password %></div>
-
-<% if devise_mapping.rememberable? -%>
-
-<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-
-<% end -%>
-<%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
-
-<% end %>
-
-</div>
-
-<div class="modal-footer">
-
-<%= render "devise/shared/links" %>
-
-</div>
-
-</div>
-
-<div class="modal hide fade in" id="sign_up">
-
-<div class="modal-header">
-
-<button class="close" data-dismiss="modal">x</button> -->
-
-
-
-
-	<!-- Modal Login -->
-	<div class="modal modal-login fade" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="modalLogin">Log In</h4>
+			<%= simple_form_for(resource, :as => resource_name, :html => {:class => "normal-form", "role" => "form" }, :url => session_path(resource_name), :remote => true, :format => :js) do |f| %>
+				<div class= "form-group">
+					<%= f.label :email %><br>
+					<div><%= f.email_field :email, :class => "form-control", :autofocus => true %></div>
 				</div>
-				<div class="modal-body">
 
-<!-- 
-					<form class="normal-form" role="form">
-						<div class="form-group">
-							<label for="" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="" placeholder="Email">
-						</div>
-						
-						<div class="form-group">
-							<label for="" class="sr-only">Password</label>
-							<input type="password" class="form-control" id="" placeholder="Password">
-						</div>
-
-						<div class="form-group">
-							<a href="#modal-recover" data-dismiss="modal" data-toggle="modal" data-target="#modal-recover">Forgot Password?</a>
-						</div>
-					</form> -->
-
-
-<%= form_for(resource, :as => resource_name, :html => {:class => "normal-form", "role" => "form" }, :url => session_path(resource_name), :remote => true, :format => :js) do |f| %>
-	<div class= "form-group">
-		<%= f.label :email %><br>
-		<div><%= f.email_field :email, :class => "form-control", :autofocus => true %></div>
-	</div>
-
-	<div class= "form-group">
-		<%= f.label :password %><br>
-		<div><%= f.password_field :password, :class => "form-control" %></div>
-	</div>
-
-	<% if devise_mapping.rememberable? -%>
-
-		<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-
-	<% end -%>
-	<%= f.submit "Sign in", :class => 'btn-credential btn btn-flat-alizarin btn-block' %>
-	<!-- reload ths if wrong? -->
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-</div>
-
-
-
+				<div class= "form-group">
+					<%= f.label :password %><br>
+					<div><%= f.password_field :password, :class => "form-control" %></div>
 				</div>
-				<div class="modal-footer">
-					<a href="#modal-register" data-dismiss="modal" data-toggle="modal" data-target="#modal-register">I do not have an account. Register here.</a>
-					<button type="button" class="btn-credential btn btn-flat-alizarin btn-block">Log In</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+
+				<% if devise_mapping.rememberable? -%>
+
+					<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+
+				<% end -%>
+				<%= f.submit "Sign in", :class => 'btn-credential btn btn-flat-alizarin btn-block' %>
+			<% end %>
+
+			</div>
+	<!-- </div> -->
+			<div class="modal-footer">
+				<a href="#modal-register" data-dismiss="modal" data-toggle="modal" data-target="#modal-register">I do not have an account. Register here.</a>
+				<button type="button" class="btn-credential btn btn-flat-alizarin btn-block">Log In</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 

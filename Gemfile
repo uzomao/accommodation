@@ -29,6 +29,9 @@ gem 'devise'
 # Font Awesome and simple form
 gem 'simple_form'
 
+# For static pages
+gem 'high_voltage'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

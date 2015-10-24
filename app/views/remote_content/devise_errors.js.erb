@@ -1,0 +1,7 @@
+if($('#form_flashes').length > 0) {
+ $('#form_flashes').remove();
+ $('.modal-body').prepend("<%= escape_javascript raw(flash_normal) %>");
+}
+else {
+ $('.modal-body').prepend("<%= escape_javascript raw(flash_normal) %>");
+}

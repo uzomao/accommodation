@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
-  respond_to :json
+  # respond_to :json
   # GET /resource/sign_in
   # def new
   #   super
