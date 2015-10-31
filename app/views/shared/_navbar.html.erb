@@ -11,7 +11,7 @@
 							<i class="fa fa-times"></i>
 						</button>
 
-						<a class="current navbar-brand" href="index.html">zRealty</a>
+						<a class="current navbar-brand" href="index.html">CamAcco</a>
 						
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
 							<span class="sr-only">Toggle Navigation</span>
@@ -42,22 +42,13 @@
 								</li>
 							<% else %>
 								<li>
-									<%= link_to "Log in", new_user_session_path, class: "login", "data-toggle": "modal", "data-target": "#modal-login" %>
-								</li>
-								<li>
 									<%= link_to "Log in", remote_sign_in_path, :remote => true, class: "login", "data-toggle": "modal" %>
-								</li>
-
-								<li>
-									<%= link_to "Register", new_user_registration_path, class: "register" %>
 								</li>
 								<li>
 									<%= link_to "Sign up", remote_sign_up_path, :remote => true, class: "register" %>
 								</li>
 
 							<% end %>
-							<!-- <li><a href="#modal-login" class="login" data-toggle="modal" data-target="#modal-login">Log In</a></li> -->
-							<!-- <li><a href="#modal-register" class="register" data-toggle="modal" data-target="#modal-register">Register</a></li> -->
 						</ul>
 
 					</div><!-- /.navbar-collapse -->
@@ -66,27 +57,3 @@
 		</div>
 	</div>
 </section>
-
-	<!-- Modal Recover -->
-	<div class="modal modal-recover fade" id="modal-recover" tabindex="-1" role="dialog" aria-labelledby="modalRecover" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="modalRecover">Recover Password</h4>
-				</div>
-				<div class="modal-body">
-					<form class="normal-form" role="form">
-						<div class="form-group">
-							<label for="" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="" placeholder="Enter email">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<span>Enter email above to recover password.</span>
-					<button type="button" class="btn-credential btn btn-flat-alizarin btn-block">Submit</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
