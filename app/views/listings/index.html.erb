@@ -42,10 +42,16 @@
 														<span class="prop-address"><%= listing.address %></span>
 														<%= listing.city %>
 														<div class="prop-price"><%= listing.price %></div>
-														<% if current_user && (listing.user_id == current_user.id) %>
-															<%= link_to "Edit", edit_listing_path(listing.id) %>
-															<%= link_to "Delete", listing_path(listing.id), :method => "delete" %>
-														<% end %>
+														<div class="clearfix link-action">
+															<% if current_user && (listing.user_id == current_user.id) %>
+																<%= link_to "Edit", edit_listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6" %>
+																<%= link_to "Delete", listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6", :method => "delete" %>
+															<% elsif user_signed_in? && (current_user.favourites.exclude? (listing.id) || current_user.favourites.empty?)%>
+																<%= link_to "Add to Favourites", listing_favourites_path(listing.id), class: "favourite-link", :method => "post" %>
+															<% elsif user_signed_in? && (current_user.favourites.include? (listing.id)) %>
+																<%= link_to "Remove from Favourites", listing_favourite_path(listing.id, listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
+															<% end %>
+														</div><!-- .clearfix link-action -->
 													</div> <!-- .caption -->
 												</div> <!-- .thumbnail-body -->
 											</div> <!-- .thumbnail -->

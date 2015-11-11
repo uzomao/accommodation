@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   match 'remote_recover_password', to: 'remote_content#remote_recover_password', via: [:get]
   devise_for :views
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
-  resources :listings
+  resources :listings do
+    resources :favourites
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,7 +24,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :users
-
   # Example resource route with options:
   #   resources :products do
   #     member do
