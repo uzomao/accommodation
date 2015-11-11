@@ -48,19 +48,19 @@
 							<span class="label label-info label-speech">Looking to buy!</span>
 						</div>
 						<div class="media-body">
-							<h4 class="media-heading"><%= current_user.first_name %> <%= current_user.last_name %></h4>
+							<h4 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h4>
 							<span class="media-meta"><i class="fa fa-map-marker"></i>Cameroon</span>
 							<!-- <a href="#" class="btn btn-flat-green">Contact</a> -->
 						</div>
 
 						<ul class="list-group list-group-inline media-counter clearfix">
 							<a href="#" id="favourited-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
-								<span class="counter-number"><%= current_user.favourites.length %></span>
-								<span class="counter-text">Favorites</span>
+								<span class="counter-number"><%= @user.favourites.length %></span>
+								<span class="counter-text">Favourites</span>
 							</li>
 							</a>
 							<a href="#" id="posted-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
-								<span class="counter-number"><%= current_user.listings.count %></span>
+								<span class="counter-number"><%= @user.listings.count %></span>
 								<span class="counter-text">Posted</span>
 							</li>
 							</a>
@@ -70,7 +70,7 @@
 							<li class="list-group-item">
 								<h5 class="list-title uppercase">Email</h5>
 								<p>
-									<%= current_user.email %>
+									<%= @user.email %>
 								</p>
 							</li>
 
@@ -95,7 +95,8 @@
 				<div class="col-sm-12 col-md-12 the-title text-left">
 					<div class="row">
 						<div class="col-md-7 col-sm-7 col-xs-8">
-							<h3>Listings Posted By <%= @username %></h3>
+							<h2 id="posted-heading">Listings Posted By <%= @username %></h2>
+							<h2 id="favourited-heading">Listings Favourited By <%= @username %></h2>
 							<!-- <span>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</span> -->
 						</div>
 						<div class="col-md-5 col-sm-5 col-xs-4">
@@ -105,7 +106,7 @@
 				</div>
 
 		<div class="posted-listings">
-			<% current_user.listings.each do |listing| %>
+			<% @user.listings.each do |listing| %>
 				<div class="prop-item col-sm-6 col-md-4">
 							<a href="/listings/<%=listing.id%>">
 								<div class="thumbnail">
@@ -137,7 +138,7 @@
 		</div>
 
 		<div class="favourited-listings">
-			<%= current_user.favourites.each do |id| %>
+			<%= @user.favourites.each do |id| %>
 				<% listing = Listing.find(id) %> <!-- this is wrong -->
 				<div class="prop-item col-sm-6 col-md-4">
 							<a href="/listings/<%=listing.id%>">
@@ -177,17 +178,21 @@
 </section>
 
 <script>
-
 $('.favourited-listings').hide();
+$('#favourited-heading').hide();
 
 $('#favourited-listings-link').click(function(){
 	$('.posted-listings').hide();
+	$('#posted-heading').hide();
 	$('.favourited-listings').show();
+	$('#favourited-heading').show();
 });
 
 $('#posted-listings-link').click(function(){
 	$('.favourited-listings').hide();
+	$('#favourited-heading').hide();
 	$('.posted-listings').show();
+	$('#posted-heading').show();
 });
 
 </script>
