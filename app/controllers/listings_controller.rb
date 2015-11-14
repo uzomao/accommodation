@@ -11,8 +11,8 @@ class ListingsController < ApplicationController
 	end
 
 	def create
-		Listing.create(listing_params)
-		Listing.last.update_columns(user_id: current_user.id)
+		current_user.listings.create(listing_params)
+		# Listing.last.update_columns(user_id: current_user.id)
 		redirect_to '/listings'
 	end
 
@@ -39,7 +39,7 @@ class ListingsController < ApplicationController
 	end
 
 	def listing_params
-    	params.require(:listing).permit(:name, :address, :city, :price, :prop_desc, :prop_info)
+    	params.require(:listing).permit(:name, :address, :city, :price, :prop_desc, :prop_info, :image)
   	end
 	
 end

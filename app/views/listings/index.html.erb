@@ -28,13 +28,9 @@
 										<a href="/listings/<%=listing.id%>">
 											<div class="thumbnail">
 												<div class="thumbnail-img thumbscrubber">
-													<span class="ts-inner">
-														<img src="http://upload.wikimedia.org/wikipedia/commons/b/b0/Semi-Detached_House_with_Ford_Escort_car.jpg" alt="House" class="ts-currslide">
-														<img src="http://upload.wikimedia.org/wikipedia/commons/b/b2/Family_room_in_Camarillo%2C_California%2C_USA.jpg" alt="Family Room">
-														<img src="http://upload.wikimedia.org/wikipedia/commons/0/0d/Bedroom_Mitcham.jpg" alt="Bedroom">
-														<img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Calhoun_bathroom.jpg" alt="Bathroom">
-														<img src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Highgrove_Kitchen.jpg" alt="Kitchen">
-												    </span>
+													<!-- <span class="ts-inner"> -->
+														<%= image_tag listing.image.url(:medium) %>
+												    <!-- </span> -->
 								    			</div>
 								    			<div class="thumbnail-body">
 								    				<div class="caption">

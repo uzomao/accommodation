@@ -32,6 +32,8 @@ gem 'simple_form'
 # For static pages
 gem 'high_voltage'
 
+gem 'paperclip', '~> 3.5.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

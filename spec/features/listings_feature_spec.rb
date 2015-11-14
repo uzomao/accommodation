@@ -107,6 +107,21 @@ feature 'listings' do
 		end
 	end
 
+	context "Images" do
+		scenario "Users can add images to listings" do
+			click_link 'Add a listing'
+			fill_in 'Name', with: 'The Student Centre'
+			fill_in 'Address', with: '123 Douala Drive'
+			fill_in 'City', with: 'Yaounde'
+			fill_in 'Price', with: 145000
+			save_and_open_page
+			click_button "Upload images"
+			click_button 'Create Listing'
+			visit '/'
+			expect(page).to have_xpath('//img')
+		end
+	end
+
 	def sign_up(first_name="Jack", last_name="Daniel", email="test@example.com", password="testtest")
 		visit('/')
 		within('#register') do
