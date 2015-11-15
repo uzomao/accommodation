@@ -11,11 +11,11 @@ class UsersController < ApplicationController
 	def update
 		@user = User.find(params[:id])
 		@user.update(user_params)
-		flash[:notice] = "user edited successfully"
+		flash[:notice] = "Your details have been edited successfully"
 		redirect_to user_path
 	end
 
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :email)
+		params.require(:user).permit(:first_name, :last_name, :email, :image)
 	end
 end
