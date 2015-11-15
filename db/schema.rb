@@ -29,12 +29,18 @@ ActiveRecord::Schema.define(version: 20151115023801) do
     t.string   "address"
     t.string   "city"
     t.integer  "price"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.string   "prop_desc"
     t.string   "text"
     t.text     "prop_info"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

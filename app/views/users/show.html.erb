@@ -24,7 +24,7 @@
 						<li class="current active"><a class='current' href="user-overview.html">Overview</a></li>
 						<li><a href="user-favorite.html">Favorites</a></li>
 						<li><a href="user-alert.html">Email Alerts</a></li>
-						<li><a href="user-account.html">My Account</a></li>
+						<li><%= link_to "Update Information", edit_user_path(@user.id) %></li>
 					</ul>
 				</div>
 			</div>
@@ -36,55 +36,9 @@
 <section id="content">
 	<div class="container overflow-hidden">
 		<div class="row row-offcanvas row-offcanvas-left row-offcanvas-sm row-offcanvas-sm-left row-offcanvas-xs box-padding">
-			<div class="col-md-3 sidebar-offcanvas sidebar-offcanvas-sm">	
-						
-			<div class="aside-profile">
-
-			<div class="panel panel-default panel-profile">
-				<div class="panel-body no-padding">
-					<div class="media profile text-center">
-						<div class="media-avatar">
-							<img src="../img/uif-2.jpg" class="img-circle">
-							<span class="label label-info label-speech">Looking to buy!</span>
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h4>
-							<span class="media-meta"><i class="fa fa-map-marker"></i>Cameroon</span>
-							<!-- <a href="#" class="btn btn-flat-green">Contact</a> -->
-						</div>
-
-						<ul class="list-group list-group-inline media-counter clearfix">
-							<a href="#" id="favourited-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
-								<span class="counter-number"><%= @user.favourites.length %></span>
-								<span class="counter-text">Favourites</span>
-							</li>
-							</a>
-							<a href="#" id="posted-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
-								<span class="counter-number"><%= @user.listings.count %></span>
-								<span class="counter-text">Posted</span>
-							</li>
-							</a>
-						</ul>
-
-						<ul class="list-group text-left">
-							<li class="list-group-item">
-								<h5 class="list-title uppercase">Email</h5>
-								<p>
-									<%= @user.email %>
-								</p>
-							</li>
-
-						</ul>
-
-					</div>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		</div>
+			
+			<%= render 'shared/profile_info' %>
+			
 			<div class="col-md-9">
 				<div class="profile-content">
 	<div class="tab-content no-bg no-border">
@@ -111,13 +65,9 @@
 							<a href="/listings/<%=listing.id%>">
 								<div class="thumbnail">
 									<div class="thumbnail-img thumbscrubber">
-										<span class="ts-inner">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/b/b0/Semi-Detached_House_with_Ford_Escort_car.jpg" alt="House" class="ts-currslide">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/b/b2/Family_room_in_Camarillo%2C_California%2C_USA.jpg" alt="Family Room">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/0/0d/Bedroom_Mitcham.jpg" alt="Bedroom">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Calhoun_bathroom.jpg" alt="Bathroom">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Highgrove_Kitchen.jpg" alt="Kitchen">
-									    </span>
+										<!-- <span class="ts-inner"> -->
+											<%= image_tag listing.pictures[0].image.url(:medium) %>
+									    <!-- </span> -->
 					    			</div>
 					    			<div class="thumbnail-body">
 					    				<div class="caption">
@@ -139,18 +89,14 @@
 
 		<div class="favourited-listings">
 			<%= @user.favourites.each do |id| %>
-				<% listing = Listing.find(id) %> <!-- this is wrong -->
+				<% listing = Listing.find(id) %> <!-- this is bad -->
 				<div class="prop-item col-sm-6 col-md-4">
 							<a href="/listings/<%=listing.id%>">
 								<div class="thumbnail">
 									<div class="thumbnail-img thumbscrubber">
-										<span class="ts-inner">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/b/b0/Semi-Detached_House_with_Ford_Escort_car.jpg" alt="House" class="ts-currslide">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/b/b2/Family_room_in_Camarillo%2C_California%2C_USA.jpg" alt="Family Room">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/0/0d/Bedroom_Mitcham.jpg" alt="Bedroom">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/c/c1/Calhoun_bathroom.jpg" alt="Bathroom">
-											<img src="http://upload.wikimedia.org/wikipedia/commons/e/e7/Highgrove_Kitchen.jpg" alt="Kitchen">
-									    </span>
+										<!-- <span class="ts-inner"> -->
+											<%= image_tag listing.pictures[0].image.url(:medium) %>
+									   <!--  </span> -->
 					    			</div>
 					    			<div class="thumbnail-body">
 					    				<div class="caption">
