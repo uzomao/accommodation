@@ -33,6 +33,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@listing = Listing.find(params[:id])
+		@listing_owner = User.find(@listing.user_id)
 	end
 
 	def update
