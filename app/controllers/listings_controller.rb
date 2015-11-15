@@ -11,8 +11,19 @@ class ListingsController < ApplicationController
 	end
 
 	def create
-		current_user.listings.create(listing_params)
-		# Listing.last.update_columns(user_id: current_user.id)
+		@listing = current_user.listings.new(listing_params)
+		
+		if @listing.save
+     
+	      	if params[:images]
+	        	params[:images].each do |image|
+	            	@listing.pictures.create(image: image)
+	            end
+	        end
+	        flash[:notice] = "An error has occurred with creating your listing"
+    	else
+            
+        end
 		redirect_to '/listings'
 	end
 
