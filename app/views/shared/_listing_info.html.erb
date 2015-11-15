@@ -24,15 +24,13 @@
 
 				<div class="panel panel-default panel-aside">
 					<ul class="list-group list-group-aside">
-						<% if !@listing_owner %>
 							<% if user_signed_in? && (current_user.favourites.exclude? (@listing.id) || current_user.favourites.empty?) %>
-								<li class="list-group-item"><a href=""><i class="fa fa-block fa-star"></i> Save to Favourites</a></li>
+								<li class="list-group-item"><%= link_to "Add to Favourites", listing_favourites_path(@listing.id), class: "favourite-link", :method => "post" %></li>
 							<% elsif user_signed_in? && (current_user.favourites.include? (@listing.id)) %>
-								<li class="list-group-item"><a href=""><i class="fa fa-block fa-star"></i> Remove from Favourites</a></li>
+								<li class="list-group-item"><%= link_to "Remove from Favourites", listing_favourite_path(@listing.id, @listing.favourites.first.id), class: "favourite-link", :method => "delete" %></li>
 							<% end %>
 						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-print"></i> Print this page</a></li>
 						<li class="list-group-item"><a href="mailto:<%= @listing_owner.email %>"><i class="fa fa-block fa-print"></i> Email listing owner</a></li>
-						<% end %>
 					</ul>
 				</div>
 
