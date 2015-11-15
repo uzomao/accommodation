@@ -40,7 +40,7 @@
 							    <div class="filmstrip-top">
 							        <div class="filmstrip-inner">
 							            <div class="item active">
-							                <%= image_tag @listing.pictures[0].image.url(:original) %>
+							                <%= image_tag @listing.pictures[0].image.url(:original) %> <!-- make this conditional? -->
 							            </div>
 							            <% @listing.pictures[1..-1].each do |picture| %>
 								            <div class="item">
@@ -87,6 +87,8 @@
 						</div>
 					</div>
 				</div>
+
+				<%= render 'shared/listing_info' %>
 
 			</div>
 
