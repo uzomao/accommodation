@@ -6,7 +6,7 @@
 				<div class="panel-body no-padding">
 					<div class="media profile text-center">
 						<div class="media-avatar">
-							<img src="../img/uif-2.jpg" class="img-circle">
+							<%= image_tag @user.image.url(:thumb) %>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h4>
