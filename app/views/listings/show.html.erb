@@ -68,28 +68,6 @@
 					<div class="col-sm-12 col-md-12">
 						<div class="product-details box">
 							<div class="product-info">
-								<h3>Property Information</h3>
-								<!-- <ul class="listing-content clearfix noprint">
-									<li>Available immediately</li>
-									<li>Furnished or unfurnished</li>
-								</ul>
-								<% if @listing.prop_info %>
-									<p><%= @listing.prop_info %></p>
-								<% else %>
-									<p><i>No information about this property was added</i></p>
-								<% end %>
-
-								<!-- <h3>Property Features</h3>
-								<ul>
-			                        <li>Wood floors</li>
-			                        <li>Overlooking the River</li>
-			                        <li>Mins to LRT</li>
-			                        <li>Three bathrooms</li>
-			                        <li>Off street parking</li>
-			                        <li>Mins to Canary Wharf</li>
-			                        <li>Excellent amenities</li>
-			            		</ul> -->
-
 								<h3>Property Description</h3>
 								<% if @listing.prop_desc %>
 									<p>
@@ -97,6 +75,13 @@
 									</p>
 								<% else %>
 									<p><i>No description was added for this property</i></p>
+								<% end %>
+
+								<h3>Property Information</h3>
+								<% if @listing.prop_info %>
+									<p><%= @listing.prop_info %></p>
+								<% else %>
+									<p><i>No information about this property was added</i></p>
 								<% end %>
 							</div>
 						</div>
