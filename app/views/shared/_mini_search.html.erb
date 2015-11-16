@@ -4,7 +4,7 @@
     <div class="row">
 
       <div class="product-list-search sidebar-offcanvas">
-        <form class="form-search" role="form">
+        <%= form_tag(listings_path, :method => "get", class: "form-search") do %>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="product-list-search-inner clearfix">
             
@@ -19,7 +19,8 @@
                     </ul>
                     
                   </div><!-- /btn-group -->
-                  <input type="text" class="form-control" placeholder="Search Property">
+                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Property Name" %>
+                  <!-- <input type="text" class="form-control" placeholder="Search Property Name"> -->
                 </div><!-- /input-group -->
               </div>
 
@@ -73,7 +74,7 @@
             </div>
 
           </div>
-        </form>
+        <% end %>
       </div>
 
 

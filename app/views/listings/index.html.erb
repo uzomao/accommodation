@@ -23,6 +23,9 @@
 						<% if @listings.empty? %>
 							<p>No listings have been posted yet</p>
 						<% else %>
+								<% if @search_results_returned %>
+									<%= @search_results_returned %>
+								<% end %>
 								<% @listings.each do |listing| %>
 									<div class="prop-item col-sm-6 col-md-3">
 										<a href="/listings/<%=listing.id%>">
