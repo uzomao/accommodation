@@ -11,7 +11,11 @@
 						<div class="col-sm-12 col-md-12 the-title text-left">
 							<div class="row">
 								<div class="col-md-6 col-sm-7 col-xs-8">
-									<h2>Featured Listings</h2>
+									<% if @search_results_returned %>
+										<h2><%= @search_results_returned %></h2>
+									<% else %>
+										<h2>Featured Listings</h2>
+									<% end %>
 								</div>
 								<div class="col-md-6 col-sm-5 col-xs-4">
 									<%= link_to "Add a listing", new_listing_path, class: "pull-right btn btn-flat-alizarin" %>
@@ -23,33 +27,30 @@
 						<% if @listings.empty? %>
 							<p>No listings have been posted yet</p>
 						<% else %>
-								<% if @search_results_returned %>
-									<%= @search_results_returned %>
-								<% end %>
-								<% @listings.each do |listing| %>
-									<div class="prop-item col-sm-6 col-md-3">
-										<a href="/listings/<%=listing.id%>">
-											<div class="thumbnail">
-												<div class="thumbnail-img thumbscrubber">
-													<!-- <span class="ts-inner"> -->
-														<%= image_tag listing.pictures[0].image.url(:medium) %>
-												    <!-- </span> -->
-								    			</div>
-								    			<div class="thumbnail-body">
-								    				<div class="caption">
-													<h3><%= listing.name %></h3>
-														<span class="prop-address"><%= listing.address %></span>
-														<%= listing.city %>
-														<div class="prop-price"><%= listing.price %></div>
-														<div class="clearfix link-action">
-															<% if current_user && (listing.user_id == current_user.id) %>
-																<%= link_to "Edit", edit_listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6" %>
-																<%= link_to "Delete", listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6", :method => "delete" %>
-															<% elsif user_signed_in? && (current_user.favourites.exclude? (listing.id) || current_user.favourites.empty?)%>
-																<%= link_to "Add to Favourites", listing_favourites_path(listing.id), class: "favourite-link", :method => "post" %>
-															<% elsif user_signed_in? && (current_user.favourites.include? (listing.id)) %>
-																<%= link_to "Remove from Favourites", listing_favourite_path(listing.id, listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
-															<% end %>
+							<% @listings.each do |listing| %>
+								<div class="prop-item col-sm-6 col-md-3">
+									<a href="/listings/<%=listing.id%>">
+										<div class="thumbnail">
+											<div class="thumbnail-img thumbscrubber">
+												<!-- <span class="ts-inner"> -->
+													<%= image_tag listing.pictures[0].image.url(:medium) %>
+											    <!-- </span> -->
+							    			</div>
+							    			<div class="thumbnail-body">
+							    				<div class="caption">
+												<h3><%= listing.name %></h3>
+													<span class="prop-address"><%= listing.address %></span>
+													<%= listing.city %>
+													<div class="prop-price"><%= listing.price %></div>
+													<div class="clearfix link-action">
+														<% if current_user && (listing.user_id == current_user.id) %>
+															<%= link_to "Edit", edit_listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6" %>
+															<%= link_to "Delete", listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6", :method => "delete" %>
+														<% elsif user_signed_in? && (current_user.favourites.exclude? (listing.id) || current_user.favourites.empty?)%>
+															<%= link_to "Add to Favourites", listing_favourites_path(listing.id), class: "favourite-link", :method => "post" %>
+														<% elsif user_signed_in? && (current_user.favourites.include? (listing.id)) %>
+															<%= link_to "Remove from Favourites", listing_favourite_path(listing.id, listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
+														<% end %>
 														</div><!-- .clearfix link-action -->
 													</div> <!-- .caption -->
 												</div> <!-- .thumbnail-body -->
