@@ -3,7 +3,12 @@ class ListingsController < ApplicationController
 	before_action :authenticate_user!, :except => [:index, :show]
 
 	def index
-		@listings = Listing.all
+		if params[:search]
+      		@listings = Listing.search(params[:search]).order("created_at DESC")
+      		@search_results_returned = "Results of your search"
+    	else
+			@listings = Listing.all
+		end
 	end
 
 	def new
