@@ -1,0 +1,37 @@
+<% content_for(:title, 'This is our home page view') %>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container"></div>
+  <div class="navbar-header"></div>
+  <button class="navbar-toggle" data-target="#nav-collapse" data-toggle="collapse" type="button"></button>
+  <span class="sr-only">Toggle navigation</span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <a class="navbar-brand" href="<%= root_path %>"></a>
+  <span>Devise_ajax</span>
+  <div class="collapse navbar-collapse" id="nav-collapse"></div>
+  <ul class="nav navbar-nav"></ul>
+  <li class="dropdown"></li>
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#"></a>
+  Menu
+  <b class="caret"></b>
+  <ul class="dropdown-menu"></ul>
+  <% if current_user %>
+  <li></li>
+  <%= link_to "Sign out", destroy_user_session_path, "data-method" => :delete %>
+  <% else %>
+  <% end %>
+  <li></li>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <li></li>
+  <%= link_to "Sign in", new_user_session_path %>
+</nav>
+<div class="container">
+  <div class="row"></div>
+  <div class="col-xs-12"></div>
+  <% if current_user %>
+  <h1>Welcome to the home view sir/madam, it seems you're logged in like a boss</h1>
+  <% else %>
+  <% end %>
+  <h1>Hello stranger, please log in to interact on a deeper level</h1>
+</div>

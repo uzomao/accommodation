@@ -29,7 +29,8 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: accommodation
+
+  username: accommodation #comment this line out when you want to run the app
 
   # The password associated with the postgres role (username).
   #password:
@@ -59,9 +60,12 @@ test:
   <<: *default
   database: accommodation_test
 
+
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
+
+  username: accommodation_test #comment this line out when you want to run the app
 #
 # Instead, provide the password as a unix environment variable when you boot
 # the app. Read http://guides.rubyonrails.org/configuring.html#configuring-a-database

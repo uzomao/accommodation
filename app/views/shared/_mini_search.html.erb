@@ -1,0 +1,84 @@
+<section id="mini-product-search">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="product-list-search sidebar-offcanvas">
+        <%= form_tag(listings_path, :method => "get", class: "form-search") do %>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="product-list-search-inner clearfix">
+            
+              <div class="form-group col-md-5 col-sm-6">
+                <label for="">Search Property</label>               
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-flat-asbestos btn-cat dropdown-toggle" data-toggle="dropdown">For Sale <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">For Rent</a></li>
+                      <li><a href="#">New Properties</a></li>
+                    </ul>
+                    
+                  </div><!-- /btn-group -->
+                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Property Name" %>
+                  <!-- <input type="text" class="form-control" placeholder="Search Property Name"> -->
+                </div><!-- /input-group -->
+              </div>
+
+              <div class="form-group col-md-1 col-sm-3">
+                <label for="">Min Price</label>
+                <select class="form-control selectpicker">
+                  <option>$100</option>
+                  <option>$200</option>
+                  <option>$300</option>
+                  <option>$400</option>
+                  <option>$500</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-1 col-sm-3">
+                <label for="">Max Price</label>
+                <select class="form-control selectpicker">
+                  <option>$100</option>
+                  <option>$200</option>
+                  <option>$300</option>
+                  <option>$400</option>
+                  <option>$500</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-2 col-sm-3">
+                <label for="">City</label>
+                <select class="form-control selectpicker">
+                  <option>Douala</option>
+                  <option>Yaounde</option>
+                  <option>Garoua</option>
+                  <option>Kousseri</option>
+                  <option>Bamenda</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-1 col-sm-3">
+                <label for="">Bedrooms</label>
+                <select class="form-control selectpicker">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+
+              <div class="form-group form-action col-md-2 col-sm-6">
+                <button type="submit" class="btn-search btn btn-flat-alizarin">Search</button>
+              </div>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>
+
+</section>

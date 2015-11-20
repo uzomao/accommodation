@@ -1,0 +1,39 @@
+<!-- Modal Login -->
+<div class="modal modal-login fade" id="login" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="modalLogin">Sign In</h4>
+			</div>
+			<div class="modal-body">
+                <%= simple_form_for(resource, :as => resource_name, :url => new_user_session_path, :remote => true, :format => :js, :html => {:class => "form-signin"}) do |f| %>
+
+					<div class="form-group">
+						<label for="" class="sr-only">Email</label>
+                        <%= f.input :email, :autofocus => true, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Email" %>
+					</div>
+
+                    <div class="form-group">
+                        <label for="" class="sr-only">Password</label>
+                        <%= f.input :password, :label => false, :input_html => {:class => 'form-control'}, :placeholder => "Password" %>
+                    </div>
+                    
+                    <div>
+                        <%= f.button :submit, "Sign In", :class => "btn-credential btn btn-flat-alizarin btn-block" %>
+                    </div>
+                    <% end %>
+
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <%= link_to "Forgot your password?", remote_recover_password_path, :remote => true, "data-dismiss" => "modal"  %>
+                </div>
+                    <%= link_to "Create an account", remote_sign_up_path, :remote => true, "data-dismiss" => "modal"  %>
+                <div>
+                    
+                </div>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal

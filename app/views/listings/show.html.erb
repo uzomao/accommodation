@@ -1,0 +1,104 @@
+<div class="container">
+	<div class="row row-offcanvas-sm row-offcanvas-sm-right box-padding">
+
+		<div class="col-md-9">
+			<section id="content">
+				
+	<div class="row">
+		<!-- Single Listing -->
+
+		<div id="product-single" class="clearfix">
+
+			<div class="col-md-12">
+				<button type="button" class="btn btn-flat-asbestos btn-icon hidden-md hidden-lg hidden-xs pull-right" data-toggle="offcanvas-sm">
+					<i class="fa fa-share"></i> Contact &amp; Share 
+				</button>
+				<div class="clearfix"></div>
+			</div>
+
+			<div id="product-title" class="col-sm-12 col-md-12 col-xs-12">
+				<div class="title-bar clearfix">
+					<div class="row">
+
+						<div class="col-sm-6 col-md-6 col-xs-12">
+							<h2><%= @listing.name %></h2>
+							<span><%= @listing.address %></span>
+						</div>
+						
+						<div class="col-sm-6 col-md-6 col-xs-12">
+							<span class="prop-price">
+								<%= @listing.price %>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="product-gallery" class="col-sm-12 col-md-12">	
+						<div class="product-details box">
+							<div id="filmstrip" class="filmstrip slide">
+							    <div class="filmstrip-top">
+							        <div class="filmstrip-inner">
+							            <div class="item active">
+							                <%= image_tag @listing.pictures[0].image.url(:original) %> <!-- make this conditional? -->
+							            </div>
+							            <% @listing.pictures[1..-1].each do |picture| %>
+								            <div class="item">
+								                <%= image_tag picture.image.url(:original) %>
+								            </div>
+								        <% end %>
+							        </div>
+							        <a class="left filmstrip-control" href="#filmstrip" data-filmstrip="prev"><i class="fa fa-chevron-left"></i></a>
+							        <a class="right filmstrip-control" href="#filmstrip" data-filmstrip="next"><i class="fa fa-chevron-right"></i></a>
+							    </div>
+
+							    <div class="filmstrip-thumbs-wrapper">
+							    	<% @listing.pictures[1..-1].each do |picture| %>
+								    <div class="filmstrip-thumbs">
+								        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
+								            <%= image_tag picture.image.url %>
+								        </a>
+								    </div>
+								    <% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-md-12">
+						<div class="product-details box">
+							<div class="product-info">
+								<h3>Property Description</h3>
+								<% if @listing.prop_desc %>
+									<p>
+										<%= @listing.prop_desc %>
+									</p>
+								<% else %>
+									<p><i>No description was added for this property</i></p>
+								<% end %>
+
+								<h3>Property Information</h3>
+								<% if @listing.prop_info %>
+									<p><%= @listing.prop_info %></p>
+								<% else %>
+									<p><i>No information about this property was added</i></p>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<%= render 'shared/listing_info' %>
+
+			</div>
+
+		</section>
+
+	</div>
+
+</div>
+
+</div>
+
+
+

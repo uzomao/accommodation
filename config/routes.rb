@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+
+  match 'remote_sign_up', to: 'remote_content#remote_sign_up', via: [:get]
+  match 'remote_sign_in', to: 'remote_content#remote_sign_in', via: [:get]
+  match 'remote_recover_password', to: 'remote_content#remote_recover_password', via: [:get]
+  devise_for :views
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  resources :listings do
+    resources :favourites
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'listings#index'
+  # root to: 'high_voltage/pages#show', id: 'home'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -12,8 +23,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+  resources :users
   # Example resource route with options:
   #   resources :products do
   #     member do

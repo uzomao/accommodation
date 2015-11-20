@@ -23,6 +23,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# For user authentication and registration
+gem 'devise'
+
+# Font Awesome and simple form
+gem 'simple_form'
+
+# For static pages
+gem 'high_voltage'
+
+gem 'paperclip', '~> 3.5.3' # github: 'thoughtbot/paperclip
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +52,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

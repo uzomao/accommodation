@@ -1,0 +1,48 @@
+<div class="col-md-3 sidebar-offcanvas sidebar-offcanvas-sm">	
+						
+			<div class="aside-profile">
+
+			<div class="panel panel-default panel-profile">
+				<div class="panel-body no-padding">
+					<div class="media profile text-center">
+						<div class="media-avatar">
+							<%= image_tag @user.image.url(:thumb) %>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading"><%= @user.first_name %> <%= @user.last_name %></h4>
+							<span class="media-meta"><i class="fa fa-map-marker"></i>Cameroon</span>
+							<!-- <a href="#" class="btn btn-flat-green">Contact</a> -->
+						</div>
+
+						<ul class="list-group list-group-inline media-counter clearfix">
+							<a href="#" id="favourited-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
+								<span class="counter-number"><%= @user.favourites.length %></span>
+								<span class="counter-text">Favourites</span>
+							</li>
+							</a>
+							<a href="#" id="posted-listings-link"><li class="list-group-item col-md-6 col-sm-6 col-xs-6">
+								<span class="counter-number"><%= @user.listings.count %></span>
+								<span class="counter-text">Posted</span>
+							</li>
+							</a>
+						</ul>
+
+						<ul class="list-group text-left">
+							<li class="list-group-item">
+								<h5 class="list-title uppercase">Email</h5>
+								<p>
+									<%= @user.email %>
+								</p>
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		</div>

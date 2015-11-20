@@ -1,0 +1,59 @@
+<section id="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="hidden-md hidden-lg navbar-toggle navbar-search-toggle" data-toggle="offcanvas">
+							<span class="sr-only">Toggle Search</span>
+							<i class="fa fa-search"></i>
+							<i class="fa fa-times"></i>
+						</button>
+
+						<a class="current navbar-brand" href="/">CamAcco</a>
+						
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+							<span class="sr-only">Toggle Navigation</span>
+							<i class="fa fa-bars"></i>
+						</button>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="collapse">
+						
+						<ul class="nav navbar-nav navbar-right">
+							<!-- <li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Property Pages <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="property-listing.html">Property Listings</a></li>
+									<li><a href="single-property-listing.html">Single Property Listing</a></li>
+								</ul>
+							</li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="contact.html">Contact</a></li>
+							<li><a href="user-overview.html">User Profile</a></li> -->
+							<% if user_signed_in? %>
+								<li>
+									<%= link_to "Profile", user_path(current_user.id) %>
+								</li>
+								<li>
+									<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+								</li>
+							<% else %>
+								<li>
+									<%= link_to "Log in", remote_sign_in_path, :remote => true, class: "login" %>
+								</li>
+								<li>
+									<%= link_to "Sign up", remote_sign_up_path, :remote => true, class: "register" %>
+								</li>
+
+							<% end %>
+						</ul>
+
+					</div><!-- /.navbar-collapse -->
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
