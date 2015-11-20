@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # clear_respond_to
   # respond_to :json
   skip_before_filter :verify_authenticity_token, :only => :create
+
   respond_to :html, :js
 
     def create

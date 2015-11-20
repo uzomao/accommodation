@@ -1,4 +1,16 @@
 class Users::SessionsController < Devise::SessionsController
+
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+
+  def create
+
+    respond_to do |format| 
+      format.js {
+        flash[:notice] = "You are now signed in"
+        render :template => "remote_content/devise_success_sign_up.js.erb"
+      }
+    end
+  end
 # before_filter :configure_sign_in_params, only: [:create]
   # respond_to :json
   # GET /resource/sign_in
