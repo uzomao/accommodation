@@ -1,10 +1,12 @@
 $('.modal').modal('hide')
 
 if($('#flash').length > 0) {
- $('#flash').remove();
- $('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+	$('#flash').remove();
+ 	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+ 	window.location.reload();
 }
 else {
- $('.modal').modal('hide')
- $('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+ 	$('.modal').modal('hide')
+ 	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+ 	window.location.reload();
 }
