@@ -1,10 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
-# before_filter :configure_account_update_params, only: [:update]
+  # before_filter :configure_sign_up_params, only: [:create]
+  # before_filter :configure_account_update_params, only: [:update]
   # clear_respond_to
   # respond_to :json
+  skip_before_filter :verify_authenticity_token, :only => :create
   respond_to :html, :js
-
 
     def create
 
@@ -91,7 +91,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
  
   # Modified Devise params for user login
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :image)
   end
 
 
