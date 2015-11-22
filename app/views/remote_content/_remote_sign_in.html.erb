@@ -22,12 +22,12 @@
                     <div>
                         <%= f.button :submit, "Sign In", :class => "btn-credential btn btn-flat-alizarin btn-block" %>
                     </div>
-                    <% end %>
+                <% end %>
 
             </div>
             <div class="modal-footer">
                 <div>
-                    <%= link_to "Forgot your password?", remote_recover_password_path, :remote => true, "data-dismiss" => "modal"  %>
+                    <%= link_to "Forgot your password?", new_user_password_path, :remote => true, "data-dismiss" => "modal"  %>
                 </div>
                     <%= link_to "Create an account", remote_sign_up_path, :remote => true, "data-dismiss" => "modal"  %>
                 <div>
