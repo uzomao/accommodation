@@ -17,9 +17,12 @@
 										<h2>Featured Listings</h2>
 									<% end %>
 								</div>
-								<div class="col-md-6 col-sm-5 col-xs-4">
-									<%= link_to "Add a listing", new_listing_path, class: "pull-right btn btn-flat-alizarin" %>
-								</div>
+
+								<% if user_signed_in? && current_user.is_landlord? %>
+									<div class="col-md-6 col-sm-5 col-xs-4">
+										<%= link_to "Add a listing", new_listing_path, class: "pull-right btn btn-flat-alizarin" %>
+									</div>
+								<% end %>
 							</div>
 						</div>
 

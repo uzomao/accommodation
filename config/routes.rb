@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   match 'remote_sign_up', to: 'remote_content#remote_sign_up', via: [:get]
   match 'remote_sign_in', to: 'remote_content#remote_sign_in', via: [:get]
-  match 'remote_recover_password', to: 'remote_content#remote_recover_password', via: [:get]
+  match 'new_user_password', to: 'remote_content#remote_recover_password', via: [:get]
+  
   devise_for :views
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   resources :listings do

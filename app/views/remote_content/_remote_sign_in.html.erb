@@ -7,7 +7,7 @@
 				<h4 class="modal-title" id="modalLogin">Sign In</h4>
 			</div>
 			<div class="modal-body">
-                <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote => true, :format => :js, :html => {:class => "form-signin"}) do |f| %>
+                <%= simple_form_for(resource, :as => resource_name, :url => new_user_session_path, :remote => true, :format => :js, :html => {:class => "form-signin"}) do |f| %>
 
 					<div class="form-group">
 						<label for="" class="sr-only">Email</label>
@@ -22,12 +22,12 @@
                     <div>
                         <%= f.button :submit, "Sign In", :class => "btn-credential btn btn-flat-alizarin btn-block" %>
                     </div>
-                    <% end %>
+                <% end %>
 
             </div>
             <div class="modal-footer">
                 <div>
-                    <%= link_to "Forgot your password?", remote_recover_password_path, :remote => true, "data-dismiss" => "modal"  %>
+                    <%= link_to "Forgot your password?", new_user_password_path, :remote => true, "data-dismiss" => "modal"  %>
                 </div>
                     <%= link_to "Create an account", remote_sign_up_path, :remote => true, "data-dismiss" => "modal"  %>
                 <div>
