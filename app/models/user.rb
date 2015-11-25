@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :listings
+  has_many :listings, dependent: :destroy
+
+  has_many :comments, dependent: :destroy
 
   serialize :favourites,Array
   # Include default devise modules. Others available are:
