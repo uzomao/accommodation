@@ -88,6 +88,10 @@
 					</div>
 				</div>
 
+				<div>
+					<%= link_to "Comment on this listing", new_listing_comment_path(@listing.id) %>
+				</div>
+
 				<%= render 'shared/listing_info' %>
 
 			</div>

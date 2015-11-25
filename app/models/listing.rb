@@ -4,6 +4,8 @@ class Listing < ActiveRecord::Base
 
 	has_many :pictures, dependent: :destroy
 
+	has_many :comments, dependent: :destroy
+
 	def self.search(query)
 	    where("name like ?", "%#{query}%") 
   	end
