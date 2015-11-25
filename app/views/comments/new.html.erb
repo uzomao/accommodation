@@ -1,0 +1,5 @@
+<%= form_for [@listing, @comment] do |f| %>
+  <%= f.label :thoughts %>
+  <%= f.text_area :thoughts %>
+  <%= f.submit 'Leave Comment' %>
+<% end %>
