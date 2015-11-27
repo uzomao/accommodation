@@ -90,6 +90,33 @@
 
 				<%= render 'shared/listing_info' %>
 
+				<%= simple_form_for [@listing, @comment], :url => listing_comments_path(@listing.id), :method => :post do |f| %>
+				  <%= f.label :thoughts %>
+				  <%= f.text_area :thoughts %>
+				  <%= f.submit 'Leave Comment' %>
+				<% end %>
+
+				<div>
+					<% if @listing.comments.any? %>
+						<% @listing.comments.each do |comment| %>
+							<% user = User.find(comment.user_id) %>
+							<%= image_tag user.image.url(:thumb) %>
+							<b><%= user.first_name + " " + user.last_name %></b>
+							</br>
+							<%= comment.thoughts %>
+							</br>
+						<% end %>
+						<div>
+							<%= link_to "Comment on this listing", new_listing_comment_path(@listing.id) %>
+						</div>
+					<% else %>
+						<div>
+							<%= link_to "Comment on this listing", new_listing_comment_path(@listing.id) %>
+						</div>
+					<% end %>
+				</div>
+
+
 			</div>
 
 		</section>

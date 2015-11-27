@@ -25,9 +25,8 @@ class ListingsController < ApplicationController
 	            	@listing.pictures.create(image: image)
 	            end
 	        end
-	        flash[:notice] = "An error has occurred with creating your listing"
     	else
-            
+            flash[:notice] = "An error has occurred with creating your listing"
         end
 		redirect_to '/listings'
 	end
@@ -39,6 +38,7 @@ class ListingsController < ApplicationController
 	def show
 		@listing = Listing.find(params[:id])
 		@listing_owner = User.find(@listing.user_id)
+		@comment = Comment.new
 	end
 
 	def update
