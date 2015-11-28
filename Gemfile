@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# to enable static asset serving and logging on Heroku
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
