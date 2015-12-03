@@ -23,6 +23,8 @@ module ApplicationHelper
   	"alert-error"
   	when :notice
   	"alert-success"
+    when :happy
+    "custom-class"
   	else
   	"alert-info"
   	end

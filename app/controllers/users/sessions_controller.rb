@@ -10,6 +10,7 @@ class Users::SessionsController < Devise::SessionsController
     respond_to do |format|
       format.js {
             flash[:notice] = "Created account, signed in."
+            # flash[:happy] = "Created account, signed in."
             render :template => "remote_content/devise_success_sign_up.js.erb"
             flash.discard
           }
