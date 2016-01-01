@@ -3,15 +3,6 @@ class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
   def create
-    if :unauthorized
-      respond_to do |format|
-      format.js {
-            flash[:notice] = "Invalid email or password"
-            render :template => "remote_content/devise_errors.js.erb"
-            flash.discard
-          }
-      end
-    else
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
     yield resource if block_given?
@@ -22,7 +13,6 @@ class Users::SessionsController < Devise::SessionsController
             flash.discard
           }
       end
-    end
   end
 
   # before_filter :configure_sign_in_params, only: [:create]
