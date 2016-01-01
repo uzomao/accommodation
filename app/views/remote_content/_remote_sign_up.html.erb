@@ -38,15 +38,14 @@
                     </div>
 
                     <div class="form-group">
+                        <%= f.label "Are you a Landlord?" %>
                         <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> I'm a Property Agent
-                            </label>
+                            <%= f.check_box :is_landlord %>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="sr-only">Upload Image</label>
+                        <label for="" class="sr-only">Upload Profile Image</label>
                         <div class="change-avatar text-center">
                             <%= f.file_field :image %>
                         </div>
