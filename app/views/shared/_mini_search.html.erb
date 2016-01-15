@@ -12,60 +12,25 @@
                 <label for="">Search Property</label>               
                 <div class="input-group">
                   <div class="input-group-btn">
-                    <button type="button" class="btn btn-flat-asbestos btn-cat dropdown-toggle" data-toggle="dropdown">For Sale <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">For Rent</a></li>
-                      <li><a href="#">New Properties</a></li>
-                    </ul>
                     
                   </div><!-- /btn-group -->
                   <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Property Name" %>
-                  <!-- <input type="text" class="form-control" placeholder="Search Property Name"> -->
                 </div><!-- /input-group -->
               </div>
 
               <div class="form-group col-md-1 col-sm-3">
                 <label for="">Min Price</label>
-                <select class="form-control selectpicker">
-                  <option>$100</option>
-                  <option>$200</option>
-                  <option>$300</option>
-                  <option>$400</option>
-                  <option>$500</option>
-                </select>
+                <%= select_tag :min_price, options_for_select([['$100', 100],['$200', 200], ['$300', 300], ['$400', 400], ['$500', 500]]) %>
               </div>
 
               <div class="form-group col-md-1 col-sm-3">
                 <label for="">Max Price</label>
-                <select class="form-control selectpicker">
-                  <option>$100</option>
-                  <option>$200</option>
-                  <option>$300</option>
-                  <option>$400</option>
-                  <option>$500</option>
-                </select>
+                <%= select_tag :max_price, options_for_select([['$1000', 1000],['$5000', 5000],['$10000', 10000],['$100000', 100000],['$1000000', 1000000]])%>
               </div>
 
               <div class="form-group col-md-2 col-sm-3">
                 <label for="">City</label>
-                <select class="form-control selectpicker">
-                  <option>Douala</option>
-                  <option>Yaounde</option>
-                  <option>Garoua</option>
-                  <option>Kousseri</option>
-                  <option>Bamenda</option>
-                </select>
-              </div>
-
-              <div class="form-group col-md-1 col-sm-3">
-                <label for="">Bedrooms</label>
-                <select class="form-control selectpicker">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <%= select_tag :city, options_for_select([['Douala', 'Douala'],['Yaounde', 'Yaounde'],['Garoua', 'Garoua'],['Kousseri', 'Kousseri'],['Bamenda', 'Bamenda']])%>
               </div>
 
               <div class="form-group form-action col-md-2 col-sm-6">

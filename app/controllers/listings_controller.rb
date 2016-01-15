@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
 
 	def index
 		if params[:search]
-      		@listings = Listing.search(params[:search]).order("created_at DESC")
+      		@listings = Listing.search(params[:search], params[:min_price], params[:max_price], params[:city]).order("created_at DESC")
       		@search_results_returned = "Results of your search"
     	else
 			@listings = Listing.all
