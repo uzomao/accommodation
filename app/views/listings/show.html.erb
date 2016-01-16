@@ -94,6 +94,7 @@
 					<p>You cannot comment on your own listing</p>
 				<% else %>
 					<%= simple_form_for [@listing, @comment], :url => listing_comments_path(@listing.id), :method => :post do |f| %>
+					  <%= f.hidden_field :parent_id %>
 					  <%= f.label :thoughts %>
 					  <%= f.text_area :thoughts %>
 					  <%= f.submit 'Leave Comment' %>
@@ -103,11 +104,13 @@
 					<div>
 							<% @listing.comments.each do |comment| %>
 								<% user = User.find(comment.user_id) %>
-								<%= image_tag user.image.url(:thumb) %>
-								<b><%= user.first_name + " " + user.last_name %></b>
-								</br>
-								<%= comment.thoughts %>
-								</br>
+								<blockquote>
+									<%= image_tag user.image.url(:thumb) %>
+									<b><%= user.first_name + " " + user.last_name %></b>
+									<p><%= comment.thoughts %></p>
+
+									<p><%= link_to 'reply', new_listing_comment_path(comment.id) %></p>
+								</blockquote>
 							<% end %>
 					</div>
 
