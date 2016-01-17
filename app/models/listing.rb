@@ -8,6 +8,6 @@ class Listing < ActiveRecord::Base
 
 	def self.search(name, min_price, max_price, city)
 	    where("name like ? and price > ? and price < ? and city like ?", "%#{name}%", min_price, max_price, "%#{city}") 
-  	end
+  end
 
 end

@@ -5,8 +5,14 @@ class ListingsController < ApplicationController
 	def index
 		if params[:search]
       		@listings = Listing.search(params[:search], params[:min_price], params[:max_price], params[:city]).order("created_at DESC")
-      		@search_results_returned = "Results of your search"
-    	else
+      		if @listings.count == 0
+	      		@search_results_returned = "No properties found. Please try widening your search."
+
+	      	else
+	      		@search_results_returned = "#{@listings.count} properties found with your search."
+      		end
+      		
+    else
 			@listings = Listing.all
 		end
 	end
@@ -23,11 +29,11 @@ class ListingsController < ApplicationController
 	      	if params[:images]
 	        	params[:images].each do |image|
 	            	@listing.pictures.create(image: image)
-	            end
+	          end
 	        end
-    	else
-            flash[:notice] = "An error has occurred with creating your listing"
-        end
+    else
+          flash[:notice] = "An error has occurred with creating your listing"
+    end
 		redirect_to '/listings'
 	end
 

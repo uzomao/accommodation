@@ -5,6 +5,10 @@ class Users::SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
+
+    p "A resource should be printed here!"
+    p "==================================================="
+
     yield resource if block_given?
     respond_to do |format|
       format.js {
