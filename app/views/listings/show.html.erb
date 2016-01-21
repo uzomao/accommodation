@@ -108,7 +108,7 @@
 							<b><%= user.first_name + " " + user.last_name %></b>
 							<p><%= comment.thoughts %></p>
 
-							<p><%= link_to 'reply', new_listing_comment_path(@listing.id) %></p>
+							<p><%= link_to 'reply', new_listing_comment_path(@listing.id, parent_id: comment.id) %></p>
 						</blockquote>
 					<% end %>
 				</div>
