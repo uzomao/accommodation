@@ -10,9 +10,8 @@ class CommentsController < ApplicationController
 
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      p parent
       @comment = parent.children.build(comment_params)
-      p @comment
+      p parent.children
       success
     else
   		@listing.comments.create(comment_params)

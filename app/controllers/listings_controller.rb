@@ -39,6 +39,8 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 		@listing_owner = User.find(@listing.user_id)
 		@comment = Comment.new
+		@comments = @listing.comments.hash_tree
+		p @comments
 	end
 
 	def update
