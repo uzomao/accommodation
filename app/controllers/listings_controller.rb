@@ -51,14 +51,14 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 		@listing.update(listing_params)
 		flash[:notice] = "Listing edited successfully"
-		redirect_to '/listings'
+		redirect_to(:back)
 	end
 
 	def destroy
 		@listing = Listing.find(params[:id])
 		@listing.destroy
 		flash[:notice] = "Your listing has been deleted successfully"
-		redirect_to '/listings'
+		redirect_to(:back)
 	end
 
 	def listing_params

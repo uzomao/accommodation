@@ -42,7 +42,7 @@
 							            <div class="item active">
 							                <%= image_tag @listing.pictures[0].image.url(:original) %> <!-- make this conditional? -->
 							            </div>
-							            <% @listing.pictures[1..-1].each do |picture| %>
+							            <% @listing.pictures[0..-1].each do |picture| %>
 								            <div class="item">
 								                <%= image_tag picture.image.url(:original) %>
 								            </div>
@@ -53,7 +53,7 @@
 							    </div>
 
 							    <div class="filmstrip-thumbs-wrapper">
-							    	<% @listing.pictures[1..-1].each do |picture| %>
+							    	<% @listing.pictures[0..-1].each do |picture| %>
 								    <div class="filmstrip-thumbs">
 								        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
 								            <%= image_tag picture.image.url %>
@@ -136,3 +136,9 @@
 </div>
 
 </div>
+
+<script>
+$('#filmstrip').filmstrip({
+        interval: 3000
+    });
+</script>
