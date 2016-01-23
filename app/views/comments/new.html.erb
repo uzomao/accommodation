@@ -1,8 +1,3 @@
-<% if @comment.parent %>
-  <p>Reply To:</p>
-  <p><%= @comment.parent.thoughts %></p>
-<% end %>
-
 <%= form_for [@listing, @comment] do |f| %>
   <%= f.hidden_field :parent_id %>
   <%= f.label :thoughts %>

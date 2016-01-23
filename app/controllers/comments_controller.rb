@@ -8,10 +8,13 @@ class CommentsController < ApplicationController
 	def create
     @listing = Listing.find(params[:listing_id])
 
+    p params
+    p params[:comment][:parent_id]
+
     if params[:comment][:parent_id].to_i > 0
-      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      @comment = parent.children.build(comment_params)
-      p parent.children
+      parent_id = params[:comment][:parent_id]
+      @listing.comments.create(comment_params)
+      Comment.last.update_columns(user_id: current_user.id)
       success
     else
   		@listing.comments.create(comment_params)
@@ -22,7 +25,7 @@ class CommentsController < ApplicationController
 
 
 	def comment_params
-  	params.require(:comment).permit(:thoughts)
+  	params.require(:comment).permit(:thoughts, :parent_id)
 	end
 
   def success
