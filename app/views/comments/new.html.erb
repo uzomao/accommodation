@@ -1,4 +1,5 @@
 <%= form_for [@listing, @comment] do |f| %>
+  <%= f.hidden_field :parent_id %>
   <%= f.label :thoughts %>
   <%= f.text_area :thoughts %>
   <%= f.submit 'Leave Comment' %>
