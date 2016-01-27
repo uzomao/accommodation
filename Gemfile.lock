@@ -133,7 +133,7 @@ GEM
       activesupport (= 4.2.3)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.4.2)
+    rake (10.5.0)
     rdoc (4.2.0)
       json (~> 1.4)
     responders (2.1.0)
@@ -212,6 +212,7 @@ DEPENDENCIES
   paperclip (~> 3.5.3)
   pg
   rails (= 4.2.3)
+  rake
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

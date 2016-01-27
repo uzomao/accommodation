@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   match 'new_user_password', to: 'remote_content#remote_recover_password', via: [:get]
   
   devise_for :views
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  # devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
 
   resources :listings do
     resources :favourites
