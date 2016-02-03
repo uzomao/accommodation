@@ -2,6 +2,8 @@ class RegistrationsController < Devise::RegistrationsController
     def create
 
       build_resource(sign_up_params)
+
+      p sign_up_params
    
       if resource.save
         p "resource could save!"
