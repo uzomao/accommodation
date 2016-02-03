@@ -8,7 +8,7 @@
 
 # clean listings from database
 Listing.delete_all
-User.delete_all
+# User.delete_all
 Picture.delete_all
 
 def seed_image(file_name)

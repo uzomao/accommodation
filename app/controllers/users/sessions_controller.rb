@@ -3,11 +3,11 @@ class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
   def create
+    p "A resource should be printed here!"
+    p auth_options
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
 
-    p "A resource should be printed here!"
-    p "==================================================="
 
     yield resource if block_given?
     respond_to do |format|
