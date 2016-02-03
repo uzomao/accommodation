@@ -9,11 +9,10 @@
 </head>
 <body>
 
-<% flash.each do |key, value| %>
-  <div class="pop">
-    <%= value %>
-  </div>
-<% end %>
+
+<div id="sessionFlash">
+</div>
+
 
 <%= render 'shared/navbar' %>
 <%= render  "remote_content/remote_sign_up" %>
@@ -25,3 +24,9 @@
 
 </body>
 </html>
+
+<% flash.each do |key, value| %>
+  <div class="pop">
+    <%= value %>
+  </div>
+<% end %>
