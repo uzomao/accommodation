@@ -36,6 +36,8 @@ gem 'high_voltage'
 
 gem 'paperclip', '~> 3.5.3' # github: 'thoughtbot/paperclip
 
+gem 'closure_tree'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
