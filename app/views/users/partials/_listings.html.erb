@@ -1,0 +1,93 @@
+    <!-- Listing Sale -->
+    <div class="product-list grid-layout clearfix">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 the-title text-left">
+          <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-8">
+              <h2 id="posted-heading">Listings Posted By <%= @username %></h2>
+              <h2 id="favourited-heading">Listings Favourited By <%= @username %></h2>
+              <!-- <span>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</span> -->
+            </div>
+            
+            <div class="col-md-5 col-sm-5 col-xs-4">
+              <a class="pull-right btn btn-flat-alizarin">View More <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="posted-listings">
+          <% @user.listings.each do |listing| %>
+            <div class="prop-item col-sm-6 col-md-4">
+                  <a href="/listings/<%=listing.id%>">
+                    <div class="thumbnail">
+                      <div class="thumbnail-img thumbscrubber">
+                        <!-- <span class="ts-inner"> -->
+                          <%= image_tag listing.pictures[0].image.url(:medium) %>
+                          <!-- </span> -->
+                        </div>
+                        <div class="thumbnail-body">
+                          <div class="caption">
+                        <h3><%= listing.name %></h3>
+                          <span class="prop-address"><%= listing.address %></span>
+                          <%= listing.city %>
+                          <div class="prop-price"><%= listing.price %></div>
+                          <div class="clearfix link-action">
+                            <%= link_to "Edit", edit_listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6" %>
+                            <%= link_to "Delete", listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6", :method => "delete" %>
+                          </div>
+                        </div> <!-- .caption -->
+                      </div> <!-- .thumbnail-body -->
+                    </div> <!-- .thumbnail -->
+                  </a>
+                </div> <!-- .prop-item col-sm-6 col-md-4 -->
+          <% end %>
+        </div>
+
+        <div class="favourited-listings">
+          <%= @user.favourites.each do |id| %>
+            <% listing = Listing.find(id) %> <!-- this is bad -->
+            <div class="prop-item col-sm-6 col-md-4">
+                  <a href="/listings/<%=listing.id%>">
+                    <div class="thumbnail">
+                      <div class="thumbnail-img thumbscrubber">
+                        <!-- <span class="ts-inner"> -->
+                          <%= image_tag listing.pictures[0].image.url(:medium) %>
+                         <!--  </span> -->
+                        </div>
+                        <div class="thumbnail-body">
+                          <div class="caption">
+                        <h3><%= listing.name %></h3>
+                          <span class="prop-address"><%= listing.address %></span>
+                          <%= listing.city %>
+                          <div class="prop-price"><%= listing.price %></div>
+                          <div class="clearfix link-action">
+                            <%= link_to "Remove from Favourites", listing_favourite_path(listing.id, listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
+                          </div>
+                        </div> <!-- .caption -->
+                      </div> <!-- .thumbnail-body -->
+                    </div> <!-- .thumbnail -->
+                  </a>
+                </div> <!-- .prop-item col-sm-6 col-md-4 -->
+          <% end %>
+        </div>
+
+    </div>
+
+<script>
+  $('.favourited-listings').hide();
+  $('#favourited-heading').hide();
+
+  $('#favourited-listings-link').click(function(){
+    $('.posted-listings').hide();
+    $('#posted-heading').hide();
+    $('.favourited-listings').show();
+    $('#favourited-heading').show();
+  });
+
+  $('#posted-listings-link').click(function(){
+    $('.favourited-listings').hide();
+    $('#favourited-heading').hide();
+    $('.posted-listings').show();
+    $('#posted-heading').show();
+  });
+</script>
