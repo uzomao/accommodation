@@ -21,12 +21,6 @@
 
 <%= yield %>
 
-
+<%= render 'shared/footer' %>
 </body>
 </html>
-
-<% flash.each do |key, value| %>
-  <div class="pop">
-    <%= value %>
-  </div>
-<% end %>
