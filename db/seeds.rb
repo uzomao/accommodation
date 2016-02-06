@@ -8,7 +8,7 @@
 
 # clean listings from database
 Listing.destroy_all
-# User.delete_all
+User.destroy_all
 Picture.destroy_all
 
 def seed_image(file_name)
@@ -18,7 +18,8 @@ end
 
 
 
-user = User.create(email: "jack@mail.com", first_name: "Jack", last_name: "Jansang", encrypted_password: "1234567890")
+user = User.new(email: "jack@mail.com", first_name: "Jack", last_name: "Jansang", password: "1234567890", encrypted_password: "1234567890")
+user.save!
 listing1 = Listing.create!(name: "Hotel Lunde", address: "123 Douala Road", city: "Douala", price: 4000, user_id: user.id)
 image1 = Picture.create({
   image: File.new(File.join(Rails.root, "/app/assets/images/seed/1.jpg")),
