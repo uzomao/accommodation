@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 		@username = @user.first_name + " " + @user.last_name
 	end
 
+	def show_messages
+		render "pages/under_construction"
+	end
+
 	def edit
 		@user = User.find(params[:id])
 	end

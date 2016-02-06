@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   match 'remote_sign_in', to: 'remote_content#remote_sign_out', via: [:get]
   match 'new_user_password', to: 'remote_content#remote_recover_password', via: [:get]
   
+  get 'messages' => 'users#show_messages'
   devise_for :views
   # devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     resources :comments
       get 'listings/(:listing)/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
