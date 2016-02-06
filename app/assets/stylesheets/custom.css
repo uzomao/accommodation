@@ -8,13 +8,7 @@
 .navbar {
     margin-top: 0px;
     margin-bottom: 0px;
-
 }
-
-.navbar-reduce-height {
-  
-}
-
 
 
 .navbar .navbar-nav > li a.register {
@@ -22,4 +16,9 @@
   border: 1px solid #a7abb5;
   color: #e74c3c;
   margin-left: 10px;
+}
+
+/* Mini-search */
+.mini-search-box {
+  margin-right: 40px;
 }

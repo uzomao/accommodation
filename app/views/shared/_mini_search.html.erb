@@ -8,29 +8,38 @@
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="product-list-search-inner clearfix">
             
-              <div class="form-group col-md-5 col-sm-6">
-                <label for="">Search Property</label>               
-                <div class="input-group">
-                  <div class="input-group-btn">
-                    
-                  </div><!-- /btn-group -->
-                  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Property Name" %>
-                </div><!-- /input-group -->
+              <div class="form-group col-md-4 col-sm-6 mini-search-box">
+                  <label for="">Search Property</label>               
+                  <div class="input-group">
+                      <div class="input-group-btn">
+                      
+                      </div><!-- /btn-group -->
+                        <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search Property Name" %>
+                  </div><!-- /input-group -->
               </div>
 
-              <div class="form-group col-md-1 col-sm-3">
+              <div class="form-group col-md-1 col-sm-3 mini-search-box">
                 <label for="">Min Price</label>
-                <%= select_tag :min_price, options_for_select([['$100', 100],['$200', 200], ['$300', 300], ['$400', 400], ['$500', 500]]) %>
+                <%= select_tag :min_price,
+                    options_for_select([['$100', 100],['$200', 200], ['$300', 300], ['$400', 400], ['$500', 500], ['$1000', 1000],['$5000', 5000],['$10000', 10000],['$100000', 100000],['$1000000', 1000000]]),
+                    class: "btn dropdown-toggle selectpicker btn-default"
+                %>
               </div>
 
-              <div class="form-group col-md-1 col-sm-3">
+              <div class="form-group col-md-1 col-sm-3 mini-search-box">
                 <label for="">Max Price</label>
-                <%= select_tag :max_price, options_for_select([['$1000', 1000],['$5000', 5000],['$10000', 10000],['$100000', 100000],['$1000000', 1000000]])%>
+                <%= select_tag :max_price,
+                    options_for_select([['$100', 100],['$200', 200], ['$300', 300], ['$400', 400], ['$500', 500], ['$1000', 1000],['$5000', 5000],['$10000', 10000],['$100000', 100000],['$1000000', 1000000]]),
+                    class: "btn dropdown-toggle selectpicker btn-default"
+                %>
               </div>
 
-              <div class="form-group col-md-2 col-sm-3">
-                <label for="">City</label>
-                <%= select_tag :city, options_for_select([['Douala', 'Douala'],['Yaounde', 'Yaounde'],['Garoua', 'Garoua'],['Kousseri', 'Kousseri'],['Bamenda', 'Bamenda']])%>
+              <div class="form-group col-md-1 col-sm-3 mini-search-box" style="margin-right: 160px;">
+                <label for="" >Town</label>
+                <%= select_tag :city, 
+                    options_for_select([['Douala', 'Douala'],['Yaounde', 'Yaounde'],['Garoua', 'Garoua'],['Kousseri', 'Kousseri'],['Bamenda', 'Bamenda'], ['Kribi', 'Kribi'], ['Maroua', 'Maroua'], ['Foumban', 'Foumban'], ['Kake', 'Kake'], ['Mamfe', 'Mamfe']]),
+                    class: "btn dropdown-toggle selectpicker btn-default"
+                %>
               </div>
 
               <div class="form-group form-action col-md-2 col-sm-6">
@@ -47,3 +56,4 @@
   </div>
 
 </section>
+
