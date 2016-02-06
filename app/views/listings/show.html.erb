@@ -40,7 +40,7 @@
 							    <div class="filmstrip-top">
 							        <div class="filmstrip-inner">
 							            <div class="item active">
-							                <%= image_tag @listing.pictures[0].image.url(:original) %> <!-- make this conditional? -->
+							                <%= image_tag @listing.pictures[0].image.url(:original), class: "media-object" %> <!-- make this conditional? -->
 							            </div>
 							            <% @listing.pictures[0..-1].each do |picture| %>
 								            <div class="item">
@@ -53,13 +53,13 @@
 							    </div>
 
 							    <div class="filmstrip-thumbs-wrapper">
-							    	<% @listing.pictures[0..-1].each do |picture| %>
-								    <div class="filmstrip-thumbs">
-								        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
-								            <%= image_tag picture.image.url %>
-								        </a>
+							    	<div class="filmstrip-thumbs">
+							    		<% @listing.pictures[0..-1].each do |picture| %>
+									        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
+									            <%= image_tag picture.image.url, class: "media-object" %>
+									        </a>
+								    	<% end %>
 								    </div>
-								    <% end %>
 								</div>
 							</div>
 						</div>
