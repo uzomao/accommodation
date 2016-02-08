@@ -36,6 +36,5 @@ module Accommodation
 
     # So that this plays well with Bower
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-
   end
 end
