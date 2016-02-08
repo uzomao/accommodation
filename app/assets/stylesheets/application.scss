@@ -11,11 +11,6 @@
  * file per style scope.
  *
  *= require bootstrap/dist/css/bootstrap
- *= require_tree .
- *= require_self
- *= require template
  *= require custom
+ *= require template
  */
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-@import url(http://fonts.googleapis.com/css?family=Karla:400,400italic,700italic,700);
