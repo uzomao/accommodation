@@ -1,8 +1,8 @@
 <section id="header">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12" style="margin: 0px">
-				<nav class="navbar navbar-custom" role="navigation">
+			<div class="col-md-12">
+				<nav class="navbar navbar-default cam-acco" role="navigation">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="hidden-md hidden-lg navbar-toggle navbar-search-toggle" data-toggle="offcanvas">
@@ -11,7 +11,7 @@
 							<i class="fa fa-times"></i>
 						</button>
 
-						<a class="current navbar-brand" href="/">CamAcco</a>
+						<a class="navbar-brand" href="/">CamAcco</a>
 						
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
 							<span class="sr-only">Toggle Navigation</span>
@@ -38,7 +38,7 @@
 									<%= link_to "Profile", user_path(current_user.id) %>
 								</li>
 								<li>
-									<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+									<%= link_to "Log out", destroy_user_session_path, :remote => true, method: :delete %>
 								</li>
 							<% else %>
 								<li>

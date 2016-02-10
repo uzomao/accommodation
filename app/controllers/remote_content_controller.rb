@@ -46,4 +46,8 @@ class RemoteContentController < ApplicationController
     end
   end
 
+  def remote_recover_password
+    #
+  end
+
 end

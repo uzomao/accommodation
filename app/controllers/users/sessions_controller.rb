@@ -3,18 +3,42 @@ class Users::SessionsController < Devise::SessionsController
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
   def create
+    p "A resource should be printed here!"
+    p auth_options
     self.resource = warden.authenticate!(auth_options)
-    set_flash_message(:notice, :signed_in) if is_flashing_format?
     sign_in(resource_name, resource)
+
+
     yield resource if block_given?
     respond_to do |format|
       format.js {
-            flash[:notice] = "Created account, signed in."
-            # flash[:happy] = "Created account, signed in."
+            set_flash_message(:notice, :signed_in)
             render :template => "remote_content/devise_success_sign_up.js.erb"
             flash.discard
           }
+      end
+  end
+
+  # DELETE /resource/sign_out
+  def destroy
+    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    # set_flash_message :notice, :signed_out if signed_out && is_flashing_format?
+    flash[:notice] = "Signed out of account"
+    yield if block_given?
+    respond_to do |format|
+      format.js {
+        render :template => "remote_content/devise_success_sign_up.js.erb"
+        flash.discard
+      }
     end
+    # respond_to_on_destroy
+
+    # respond_to do |format|
+    #   format.js {
+    #     # render :template => "remote_content/devise_success_sign_up.js.erb"
+    #     flash.discard
+    #   }
+    # end
   end
 
   # before_filter :configure_sign_in_params, only: [:create]
@@ -28,11 +52,6 @@ class Users::SessionsController < Devise::SessionsController
   # def create
 
   #   respond_with json: "shared/login_modal"
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
   # end
 
   # protected

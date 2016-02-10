@@ -90,6 +90,43 @@
 
 				<%= render 'shared/listing_info' %>
 
+				<% if @listing.user_id == current_user.id %>
+					<p>You cannot comment on your own listing</p>
+				<% else %>
+					<%= simple_form_for [@listing, @comment], :url => listing_comments_path(@listing.id), :method => :post do |f| %>
+					  <%= f.label :thoughts %>
+					  <%= f.text_area :thoughts %>
+					  <%= f.submit 'Leave Comment' %>
+					<% end %>
+				<% end %>
+
+					<div>
+							<% @listing.comments.each do |comment| %>
+								<% if comment.parent_id == nil %>
+									<% user = User.find(comment.user_id) %>
+									<blockquote>
+										<%= image_tag user.image.url(:thumb) %>
+										<b><%= user.first_name + " " + user.last_name %></b>
+										<p><%= comment.thoughts %></p>
+
+										<p><%= link_to 'reply', new_listing_comment_path(@listing.id, parent_id: comment.id) %></p>
+										<% if comment.child_comments %>
+											<% comment.child_comments.each do |child_comment| %>
+											<div>
+												<% user = User.find(child_comment.user_id) %>
+												<blockquote>
+													<%= image_tag user.image.url(:thumb) %>
+													<b><%= user.first_name + " " + user.last_name %></b>
+													<p><%= child_comment.thoughts %></p>
+												</blockquote>
+											</div>
+											<% end %>
+										</blockquote>
+										<% end %>
+								<% end %>
+							<% end %>
+					</div>
+
 			</div>
 
 		</section>
@@ -99,6 +136,3 @@
 </div>
 
 </div>
-
-
-

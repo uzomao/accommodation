@@ -11,26 +11,21 @@
 </head>
 <body>
 
-<% flash.each do |key, value| %>
-  <div class="pop">
-    <%= value %>
-  </div>
-<% end %>
+
+<div id="sessionFlash">
+</div>
+
 
 <%= render 'shared/navbar' %>
 <%= render  "remote_content/remote_sign_up" %>
 <%= render  "remote_content/remote_sign_in" %>
 <%= render  "remote_content/remote_recover_password" %>
 
+
 <%= yield %>
 
-<script type="text/javascript">
-  $(document).ajaxError(function (e, xhr, settings) {
-          if (xhr.status == 401) {
-             $('.error').html(xhr.responseText);
-          }
-  });
-</script>
+
+<%= render 'shared/footer' %>
 
 </body>
 </html>

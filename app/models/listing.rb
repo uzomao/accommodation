@@ -4,8 +4,10 @@ class Listing < ActiveRecord::Base
 
 	has_many :pictures, dependent: :destroy
 
-	def self.search(query)
-	    where("name like ?", "%#{query}%") 
-  	end
+	has_many :comments, dependent: :destroy
+
+	def self.search(name, min_price, max_price, city)
+	    where("name like ? and price > ? and price < ? and city like ?", "%#{name}%", min_price, max_price, "%#{city}") 
+  end
 
 end

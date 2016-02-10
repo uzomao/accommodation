@@ -1,21 +1,12 @@
 $('.modal').modal('hide')
 
-$('#flash').remove();
-$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
-// setTimeout(function() {
-//   $('#flash').remove();
-// }, 2000);
-
-// if($('#flash').length > 0) {
-// 	$('#flash').remove();
-//  	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
-//   setTimeout(function() {
-//     $('#flash').remove();
-//   }, 2000);
- 	// window.location.reload();
-// }
-// else {
-//  	$('.modal').modal('hide')
-//  	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
-//  	window.location.reload();
-// }
+if($('#modalFlash').length > 0) {
+	$('#modalFlash').remove();
+ 	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+ 	window.location.reload();
+}
+else {
+ 	$('.modal').modal('hide')
+ 	$('body').prepend("<%= escape_javascript raw(flash_normal) %>");
+ 	window.location.reload();
+}
