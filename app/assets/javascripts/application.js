@@ -16,4 +16,4 @@
 //= require_tree .
 //= require bootstrap/dist/js/bootstrap
 //= require jquery.filmstrip.js
-//= require thumbscrubber.js
+//= require bootstrap-sprockets

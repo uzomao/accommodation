@@ -9,6 +9,8 @@ gem 'rake'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use bootstrap sass?
+gem 'bootstrap-sass', '>= 3.3.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -37,6 +39,9 @@ gem 'high_voltage'
 gem 'paperclip', '~> 3.5.3' # github: 'thoughtbot/paperclip
 
 gem 'closure_tree'
+
+#Enables STDOUT logging, plus serving files in production
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -8,13 +8,7 @@
 .navbar {
     margin-top: 0px;
     margin-bottom: 0px;
-
 }
-
-.navbar-reduce-height {
-  
-}
-
 
 
 .navbar .navbar-nav > li a.register {
@@ -23,3 +17,12 @@
   color: #e74c3c;
   margin-left: 10px;
 }
+
+/* Mini-search */
+.mini-search-box {
+  margin-right: 40px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Karla:400,400italic,700italic,700);
