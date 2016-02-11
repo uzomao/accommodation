@@ -36,7 +36,9 @@
 										<div class="thumbnail">
 											<div class="thumbnail-img thumbscrubber">
 												<!-- <span class="ts-inner"> -->
-													<%= image_tag listing.pictures[0].image.url(:medium) %>
+													<% if listing.pictures[0] %>
+														<%= image_tag listing.pictures[0].image.url(:medium) %>
+													<% end %>
 											    <!-- </span> -->
 							    			</div>
 							    			<div class="thumbnail-body">

@@ -90,8 +90,10 @@
 
 				<%= render 'shared/listing_info' %>
 
-				<% if @listing.user_id == current_user.id %>
+				<% if current_user && @listing.user_id == current_user.id %>
 					<p>You cannot comment on your own listing</p>
+				<% elsif !current_user  %>
+					<p><%= link_to "Log in", remote_sign_in_path, :remote => true, class: "login" %> to comment</p>
 				<% else %>
 					<%= simple_form_for [@listing, @comment], :url => listing_comments_path(@listing.id), :method => :post do |f| %>
 					  <%= f.label :thoughts %>
