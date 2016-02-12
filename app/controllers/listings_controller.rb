@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
 	      		@search_results_returned = "#{@listings.count} properties found with your search."
       		end
       		
-    else
+    	else
 			@listings = Listing.all
 		end
 	end
@@ -29,11 +29,12 @@ class ListingsController < ApplicationController
 	      	if params[:images]
 	        	params[:images].each do |image|
 	            	@listing.pictures.create(image: image)
-	          end
+	          	end
 	        end
-    else
+    	else
           flash[:notice] = "An error has occurred with creating your listing"
-    end
+    	end
+
 		redirect_to '/listings'
 	end
 
@@ -50,15 +51,20 @@ class ListingsController < ApplicationController
 	def update
 		@listing = Listing.find(params[:id])
 		@listing.update(listing_params)
+		if params[:images]
+        	params[:images].each do |image|
+            	@listing.pictures.create(image: image)
+          	end
+	    end
 		flash[:notice] = "Listing edited successfully"
-		redirect_to '/listings'
+		redirect_to '/'
 	end
 
 	def destroy
 		@listing = Listing.find(params[:id])
 		@listing.destroy
 		flash[:notice] = "Your listing has been deleted successfully"
-		redirect_to '/listings'
+		redirect_to '/'
 	end
 
 	def listing_params

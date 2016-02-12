@@ -45,23 +45,23 @@
 
         <div class="favourited-listings">
           <%= @user.favourites.each do |id| %>
-            <% listing = Listing.find(id) %> <!-- this is bad -->
+            <% @listing = Listing.find(id) %> <!-- this is bad -->
             <div class="prop-item col-sm-6 col-md-4">
-                  <a href="/listings/<%=listing.id%>">
+                  <a href="/listings/<%=@listing.id%>">
                     <div class="thumbnail">
                       <div class="thumbnail-img thumbscrubber">
                         <!-- <span class="ts-inner"> -->
-                          <%= image_tag listing.pictures[0].image.url(:medium) %>
+                          <%= image_tag @listing.pictures[0].image.url(:medium) %>
                          <!--  </span> -->
                         </div>
                         <div class="thumbnail-body">
                           <div class="caption">
-                        <h3><%= listing.name %></h3>
-                          <span class="prop-address"><%= listing.address %></span>
-                          <%= listing.city %>
-                          <div class="prop-price"><%= listing.price %></div>
+                        <h3><%= @listing.name %></h3>
+                          <span class="prop-address"><%= @listing.address %></span>
+                          <%= @listing.city %>
+                          <div class="prop-price"><%= @listing.price %></div>
                           <div class="clearfix link-action">
-                            <%= link_to "Remove from Favourites", listing_favourite_path(listing.id, listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
+                            <%= link_to "Remove from Favourites", listing_favourite_path(@listing.id, @listing.favourites.first.id), class: "favourite-link", :method => "delete" %>
                           </div>
                         </div> <!-- .caption -->
                       </div> <!-- .thumbnail-body -->
