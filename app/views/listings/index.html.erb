@@ -46,7 +46,7 @@
 												<h3><%= listing.name %></h3>
 													<span class="prop-address"><%= listing.address %></span>
 													<%= listing.city %>
-													<div class="prop-price"><%= listing.price %></div>
+													<div class="prop-price">$<%= listing.price %></div>
 													<div class="clearfix link-action">
 														<% if current_user && (listing.user_id == current_user.id) %>
 															<%= link_to "Edit", edit_listing_path(listing.id), class: "col-md-6 col-sm-6 col-xs-6" %>

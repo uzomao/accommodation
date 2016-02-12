@@ -227,5 +227,3 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     })
 
 }(window.jQuery);
-
-console.log("I'm working");
