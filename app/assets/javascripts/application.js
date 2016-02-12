@@ -14,6 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap/dist/js/bootstrap
 //= require jquery.filmstrip.js
 //= require bootstrap-sprockets
