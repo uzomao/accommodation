@@ -1,0 +1,52 @@
+<section id="profile-info">
+	
+	<div class="profile-cover-section">
+		<div class="title-section-img">
+			<p>INSERT SOME KIND OF PICTURE HERE</p>
+			<img src="img/img-coverphoto.jpg" style="top: -380px;" />
+		</div>
+	</div>
+
+	<div class="profile-cover-info"></div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse-profile">
+					<span class="sr-only">Toggle Navigation</span>
+					<i class="fa fa-ellipsis-h"></i>
+				</button>
+				<button type="button" class="btn btn-icon hidden-md hidden-lg text-left" data-toggle="offcanvas-sm">
+					<i class="fa fa-user"></i>
+				</button>
+				<div class="clearfix"></div>
+				<div class="collapse navbar-collapse" id="collapse-profile">
+					<ul id="profiletab" class="nav nav-tabs nav-tabs-hollo">
+						<li class="current active"><a class='current' href="user-overview.html">Overview</a></li>
+						<!-- <li><a href="user-alert.html">Messages</a></li> -->
+						<li><%= link_to "Update Information", edit_user_path(@user.id) %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<section id="content">
+		<div class="container overflow-hidden">
+				<div class="row row-offcanvas row-offcanvas-left row-offcanvas-sm row-offcanvas-sm-left row-offcanvas-xs box-padding">
+						<%= render 'users/partials/profile_info' %>
+				
+						<div class="col-md-9">
+								<div class="profile-content">
+										<div class="tab-content no-bg no-border">
+												<%= render 'users/partials/listings' %>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</section>
+
+

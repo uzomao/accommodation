@@ -1,0 +1,7 @@
+if($('.modal').length > 0) {
+ $("#login").modal();
+}
+else {
+ $("body").prepend("<%= escape_javascript(render "remote_sign_in", :formats => [:html]) %>");
+ $("#login").modal();
+}

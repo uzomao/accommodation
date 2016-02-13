@@ -1,0 +1,9 @@
+if($('#modalFlash').length > 0) {
+ $('#modalFlash').remove();
+ $('#modalFlash').remove();
+ $('#modalFlash').remove();
+ $('.modal-body').prepend("<%= escape_javascript raw(flash_normal) %>");
+}
+else {
+ $('.modal-body').prepend("<%= escape_javascript raw(flash_normal) %>");
+}

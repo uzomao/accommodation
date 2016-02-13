@@ -1,0 +1,9 @@
+<div id="modalFlash">
+  <% flash.each do |type, message| %>
+  <div class="<%= twitterized_type(type) %> alert alert-dismissable">
+  <!-- <div class="<%= twitterized_type(type) %>"> -->
+    <%= message %>
+  <button aria-hidden="true" class="close" data-dismiss="alert">×</button>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,51 @@
+<div class="aside-product-profile">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="panel panel-default panel-aside">
+					<!-- Default panel contents -->
+					<div class="panel-heading clearfix">
+						<h4 class="panel-title">Advertised By</h4>
+					</div>
+
+					<div class="panel-body">
+						<div class="agent-avatar">
+							<%= image_tag @listing_owner.image.url(:thumb) %>
+						</div>
+						<div class="agent-info">
+							<a href="#">
+								<a href="../users/<%= @listing_owner.id %>"><h4><%= @listing_owner.first_name + " " + @listing_owner.last_name %></h4></a>
+							</a>
+						</div>
+						<div class="agent-contact">
+							<span>Email <%= @listing_owner.email %></span>
+							<a href="mailto:<%= @listing_owner.email %>" class="btn btn-flat-warning"><i class="fa fa-envelope"></i> Request Details</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default panel-aside">
+					<ul class="list-group list-group-aside">
+							<% if user_signed_in? && (current_user.favourites.exclude? (@listing.id) || current_user.favourites.empty?) %>
+								<li class="list-group-item"><%= link_to "Add to Favourites", listing_favourites_path(@listing.id), class: "favourite-link", :method => "post" %></li>
+							<% elsif user_signed_in? && (current_user.favourites.include? (@listing.id)) %>
+								<li class="list-group-item"><%= link_to "Remove from Favourites", listing_favourite_path(@listing.id, @listing.favourites.first.id), class: "favourite-link", :method => "delete" %></li>
+							<% end %>
+						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-print"></i> Print this page</a></li>
+						<li class="list-group-item"><a href="mailto:<%= @listing_owner.email %>"><i class="fa fa-block fa-print"></i> Email listing owner</a></li>
+					</ul>
+				</div>
+
+				<div class="panel panel-default panel-aside">
+					<div class="panel-heading clearfix">
+						<h4 class="panel-title">Share this Property</h4>
+					</div>
+
+					<ul class="list-group list-group-aside">
+						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-facebook"></i> Share in Facebook</a></li>
+						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-twitter"></i> Tweet this</a></li>
+						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-pinterest"></i> Pin it!</a></li>
+						<li class="list-group-item"><a href="#"><i class="fa fa-block fa-envelope"></i> Email to Friends</a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>	
