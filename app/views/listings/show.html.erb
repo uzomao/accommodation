@@ -27,7 +27,7 @@
 						
 						<div class="col-sm-6 col-md-6 col-xs-12">
 							<span class="prop-price">
-								<%= @listing.price %>
+								$<%= @listing.price %>
 							</span>
 						</div>
 					</div>
@@ -40,9 +40,9 @@
 							    <div class="filmstrip-top">
 							        <div class="filmstrip-inner">
 							            <div class="item active">
-							                <%= image_tag @listing.pictures[0].image.url(:original) %> <!-- make this conditional? -->
+							                <%= image_tag @listing.pictures[0].image.url(:original), class: "media-object" %> <!-- make this conditional? -->
 							            </div>
-							            <% @listing.pictures[1..-1].each do |picture| %>
+							            <% @listing.pictures[0..-1].each do |picture| %>
 								            <div class="item">
 								                <%= image_tag picture.image.url(:original) %>
 								            </div>
@@ -53,13 +53,13 @@
 							    </div>
 
 							    <div class="filmstrip-thumbs-wrapper">
-							    	<% @listing.pictures[1..-1].each do |picture| %>
-								    <div class="filmstrip-thumbs">
-								        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
-								            <%= image_tag picture.image.url %>
-								        </a>
+							    	<div class="filmstrip-thumbs">
+							    		<% @listing.pictures[0..-1].each do |picture| %>
+									        <a class="thumb selector" href="#filmstrip" data-filmstrip="selector">
+									            <%= image_tag picture.image.url, class: "media-object" %>
+									        </a>
+								    	<% end %>
 								    </div>
-								    <% end %>
 								</div>
 							</div>
 						</div>
@@ -90,8 +90,10 @@
 
 				<%= render 'shared/listing_info' %>
 
-				<% if @listing.user_id == current_user.id %>
+				<% if current_user && @listing.user_id == current_user.id %>
 					<p>You cannot comment on your own listing</p>
+				<% elsif !current_user  %>
+					<p><%= link_to "Log in", remote_sign_in_path, :remote => true, class: "login" %> to comment</p>
 				<% else %>
 					<%= simple_form_for [@listing, @comment], :url => listing_comments_path(@listing.id), :method => :post do |f| %>
 					  <%= f.label :thoughts %>
@@ -101,7 +103,7 @@
 				<% end %>
 
 					<div>
-							<% @listing.comments.each do |comment| %>
+							<% @listing.comments.reverse_each do |comment| %>
 								<% if comment.parent_id == nil %>
 									<% user = User.find(comment.user_id) %>
 									<blockquote>
@@ -111,7 +113,7 @@
 
 										<p><%= link_to 'reply', new_listing_comment_path(@listing.id, parent_id: comment.id) %></p>
 										<% if comment.child_comments %>
-											<% comment.child_comments.each do |child_comment| %>
+											<% comment.child_comments.reverse_each do |child_comment| %>
 											<div>
 												<% user = User.find(child_comment.user_id) %>
 												<blockquote>
@@ -136,3 +138,9 @@
 </div>
 
 </div>
+
+<script>
+$('#filmstrip').filmstrip({
+        interval: 3000
+    });
+</script>
