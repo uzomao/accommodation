@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :comments
       get 'listings/(:listing)/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   end
+
+  resources :conversations do
+    resources :messages
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
