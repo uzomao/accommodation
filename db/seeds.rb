@@ -22,8 +22,8 @@ user = User.new(email: "jack@mail.com", first_name: "Jack", last_name: "Jansang"
 user.save!
 listing1 = Listing.create!(name: "Hotel Lunde", address: "123 Douala Road", city: "Douala", price: 4000, user_id: user.id)
 image1 = Picture.create({
-  # image: File.new(File.join(Rails.root, "/app/assets/images/seed/1.jpg")),
-  image: "https://s3.amazonaws.com/camacco-bucket/1.jpg",
+  image: File.new(File.join(Rails.root, "/app/assets/images/seed/1.jpg")),
+  # image: "https://s3.amazonaws.com/camacco-bucket/1.jpg",
   listing_id: listing1.id
 })
 listing2 = Listing.create!(name: "Yaounde Apartment", address: "6435 Yaounde Road", city: "Yaounde", price: 3000, user_id: user.id)

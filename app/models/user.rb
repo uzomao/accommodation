@@ -11,5 +11,8 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password_confirmation
 
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :image,
+    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                 :default_url => "/images/:style/missing.png",
+                 storage: :s3
 end

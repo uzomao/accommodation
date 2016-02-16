@@ -39,7 +39,8 @@ gem 'simple_form'
 gem 'high_voltage'
 
 gem 'paperclip', '~> 3.5.3' # github: 'thoughtbot/paperclip
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2'
 
 gem 'closure_tree'
 
