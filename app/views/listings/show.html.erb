@@ -84,7 +84,9 @@
 									<p><i>No information about this property was added</i></p>
 								<% end %>
 							</div>
-							<%= link_to "Pay via PayPal", activate_paypal_path(@listing.id), class: "pull-right btn btn-flat-alizarin" %>
+							<% if current_user && current_user.id != @listing.user_id %>
+								<%= link_to "Pay via PayPal", activate_paypal_path(@listing.id), class: "pull-right btn btn-flat-alizarin" %>
+							<% end %>
 						</div>
 					</div>
 				</div>
