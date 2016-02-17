@@ -71,4 +71,8 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  #paypal payments
+  post "/listings/:id" => "listings#show"
+  post "/hook" => "listings#hook"
 end

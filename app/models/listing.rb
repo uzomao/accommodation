@@ -10,7 +10,10 @@ class Listing < ActiveRecord::Base
 	    where("name like ? and price > ? and price < ? and city like ?", "%#{name}%", min_price, max_price, "%#{city}") 
   	end
 
+  	serialize :notification_params, Hash
+  	
   	def paypal_url(return_path)
+
 	    values = {
 	        business: "chidumaga@gmail.com",
 	        cmd: "_xclick",
@@ -20,7 +23,8 @@ class Listing < ActiveRecord::Base
 	        amount: self.price,
 	        item_name: self.name,
 	        item_number: self.id,
-	        quantity: '1'
+	        quantity: '1',
+	        notify_url: "#{Rails.application.secrets.app_host}/hook"
 	    }
 	    "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   	end

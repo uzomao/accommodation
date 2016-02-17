@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
 
 	before_action :authenticate_user!, :except => [:index, :show]
+	protect_from_forgery except: [:hook]
 
 	def index
 		if params[:search]
@@ -70,6 +71,16 @@ class ListingsController < ApplicationController
 	def activate_paypal
 		@listing = Listing.find(params[:format])
 		redirect_to @listing.paypal_url(listing_path(@listing))
+	end
+
+	def hook
+		params.permit! # Permit all Paypal input params
+		status = params[:payment_status]
+		if status == "Completed"
+		  @payment = Payment.find params[:invoice]
+		  @payment.update_attributes notification_params: params, status: status, transaction_id: params[:txn_id], purchased_at: Time.now
+		end
+		render nothing: true
 	end
 
 	def listing_params
