@@ -67,6 +67,11 @@ class ListingsController < ApplicationController
 		redirect_to '/'
 	end
 
+	def activate_paypal
+		@listing = Listing.find(params[:format])
+		redirect_to @listing.paypal_url(listing_path(@listing))
+	end
+
 	def listing_params
     	params.require(:listing).permit(:name, :address, :city, :price, :prop_desc, :prop_info)
   	end
