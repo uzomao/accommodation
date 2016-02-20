@@ -84,6 +84,9 @@
 									<p><i>No information about this property was added</i></p>
 								<% end %>
 							</div>
+							<% if current_user && current_user.id != @listing.user_id %>
+								<%= link_to "Pay via PayPal", activate_paypal_path(@listing.id), class: "pull-right btn btn-flat-alizarin" %>
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -102,32 +105,32 @@
 					<% end %>
 				<% end %>
 
-					<div>
-							<% @listing.comments.reverse_each do |comment| %>
-								<% if comment.parent_id == nil %>
-									<% user = User.find(comment.user_id) %>
-									<blockquote>
-										<%= image_tag user.image.url(:thumb) %>
-										<b><%= user.first_name + " " + user.last_name %></b>
-										<p><%= comment.thoughts %></p>
+				<div>
+						<% @listing.comments.reverse_each do |comment| %>
+							<% if comment.parent_id == nil %>
+								<% user = User.find(comment.user_id) %>
+								<blockquote>
+									<%= image_tag user.image.url(:thumb) %>
+									<b><%= user.first_name + " " + user.last_name %></b>
+									<p><%= comment.thoughts %></p>
 
-										<p><%= link_to 'reply', new_listing_comment_path(@listing.id, parent_id: comment.id) %></p>
-										<% if comment.child_comments %>
-											<% comment.child_comments.reverse_each do |child_comment| %>
-											<div>
-												<% user = User.find(child_comment.user_id) %>
-												<blockquote>
-													<%= image_tag user.image.url(:thumb) %>
-													<b><%= user.first_name + " " + user.last_name %></b>
-													<p><%= child_comment.thoughts %></p>
-												</blockquote>
-											</div>
-											<% end %>
-										</blockquote>
-										<% end %>
+									<p><%= link_to 'reply', new_listing_comment_path(@listing.id, parent_id: comment.id) %></p>
+									<% if comment.child_comments %>
+										<% comment.child_comments.reverse_each do |child_comment| %>
+										<div>
+											<% user = User.find(child_comment.user_id) %>
+											<blockquote>
+												<%= image_tag user.image.url(:thumb) %>
+												<b><%= user.first_name + " " + user.last_name %></b>
+												<p><%= child_comment.thoughts %></p>
+											</blockquote>
+										</div>
+									<% end %>
+								</blockquote>
 								<% end %>
 							<% end %>
-					</div>
+						<% end %>
+				</div>
 
 			</div>
 
