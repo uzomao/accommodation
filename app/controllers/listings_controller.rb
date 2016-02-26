@@ -47,6 +47,15 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 		@listing_owner = User.find(@listing.user_id)
 		@comment = Comment.new
+
+		if Conversation.between(@listing.user_id, current_user.id).present?
+      @conversation = Conversation.between(@listing.user_id, current_user.id).first
+    else
+      @conversation = Conversation.create!(@listing.user_id, current_user.id)
+    end
+
+    p @conversation
+
 	end
 
 	def update

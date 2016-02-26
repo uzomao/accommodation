@@ -1,20 +1,25 @@
 <div class="ui segment">
   <h3>Mailbox</h3>
 
-  <div class="ui list">
-    <div class="item">
-      <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
+  <% if @conversations.size < 1 %>
+      <p>You have no messages. Why don't you reach out to a Landlord? </p>
+
+  <% else %>
+      <ul class="conversation-list">
+          <% @conversations.each do |conversation| %>
+                <div class="conversation-list-row">
+                    <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                      <% if conversation.sender_id == current_user.id %>
+                        <% recipient = User.find(conversation.recipient_id) %>
+                      <% else %>
+                        <% recipient = User.find(conversation.sender_id) %>
+                      <% end %>
+                      <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
+                    <% end %>
+                </div>
           <% end %>
-          <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+      </ul>
+  <% end %>
 </div>
 
 

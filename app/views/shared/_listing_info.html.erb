@@ -14,10 +14,11 @@
 							<a href="#">
 								<a href="../users/<%= @listing_owner.id %>"><h4><%= @listing_owner.first_name + " " + @listing_owner.last_name %></h4></a>
 							</a>
+							<span>Email: <%= @listing_owner.email %></span>
 						</div>
 						<div class="agent-contact">
-							<span>Email <%= @listing_owner.email %></span>
-							<a href="mailto:<%= @listing_owner.email %>" class="btn btn-flat-warning"><i class="fa fa-envelope"></i> Request Details</a>
+							<%= link_to "Send #{@listing_owner.first_name} a Message:", {:controller => "messages", :action => "index", :conversation_id => @conversation.id}, class: "btn btn-flat-warning" %>
+									<i class="fa fa-envelope"></i> 
 						</div>
 					</div>
 				</div>
